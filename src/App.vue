@@ -83,6 +83,7 @@ export default {
 }
 
 .BeginBtn {
+  margin-top: 1.5rem;
   background-color: transparent;
   color: gray;
   padding: 1rem;
