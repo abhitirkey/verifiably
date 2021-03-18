@@ -6,6 +6,14 @@ import VueRouter from 'vue-router'
 import Home from './components/Home.vue'
 import Contact from './components/Contact.vue'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCoffee, faArrowLeft, faArrowRight, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faCoffee, faArrowLeft, faArrowRight, faPaperPlane)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
 Vue.use(VueRouter);
 Vue.config.productionTip = false;
 
@@ -24,6 +32,8 @@ const router = new VueRouter({
   routes,
   mode: 'history'
 });
+
+// new Vue({  router,  store,  render: h => h(App),}).$mount('#app');
 
 new Vue({
   router,
