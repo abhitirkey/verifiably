@@ -1,18 +1,16 @@
 <template>
   <div class="app_container">    
-
-    <div class="logo full-logo-animation" :class="{'animateToTopLeft' : Journey}">
+    <div class="logo">
         <LogoSVG/>
         <span class="erifiably">erifiably.</span>
-        <span class="tagline" ref="tagline">Because transparency matters.</span>
     </div>
 
-  <div class="IntroContainer" :class="{'fadeOutIntro' : Journey}">
+  <!-- <div class="IntroContainer" :class="{'fadeOutIntro' : Journey}">
     <p>This is what we do. This is how you'll benefit.</p>
     <button class="BeginBtn" @click="BeginJourney()">Begin the journey</button>
-  </div>
+  </div> -->
 
-  <Contact v-if="Journey" :Journey="Journey"/>
+  <!-- <Contact v-if="Journey" :Journey="Journey"/> -->
     <!-- <Header/> -->
     <!-- <transition name="view" appear enter-active-class="animate__animated animate__zoomInRight delay" leave-active-class="animate__animated animate__zoomOutLeft"> -->
       <!-- <router-view/> -->
@@ -21,14 +19,12 @@
 </template>
 
 <script>
-
 import LogoSVG from './assets/verifiably_check.vue'
-import Contact from './components/Contact.vue'
 
 export default {
   name: "App",
   components: {
-    LogoSVG, Contact
+    LogoSVG
   },
   data() {
     return {
@@ -65,7 +61,7 @@ export default {
   justify-content: center;
   align-items: center;
 }
-
+/* 
 .IntroContainer {
     opacity: 0;
     position: relative;
@@ -80,9 +76,9 @@ export default {
 .IntroContainer > p {
   font-size: 2rem;
   color: rgb(165, 165, 165);
-}
+} */
 
-.BeginBtn {
+/* .BeginBtn {
   margin-top: 1.5rem;
   background-color: transparent;
   color: gray;
@@ -109,5 +105,5 @@ export default {
   opacity: 1;
   animation: fadeOutRight 1s;
   animation-fill-mode: forwards;
-}
+} */
 </style>
