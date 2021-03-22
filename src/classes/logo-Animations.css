@@ -18,9 +18,9 @@
   position: absolute;
   font-size: 2.5rem;
   font-weight: bolder;
-  color: #3f3f3f;
+  color: #6e6e6e;
   top: 2.5rem;
-  left: 6rem;
+  left: -5rem;
 
   /* Animation properties */
   animation: fade-in-left 1s;
