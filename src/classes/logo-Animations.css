@@ -29,6 +29,9 @@
   -webkit-animation-delay: 1s;
   animation-fill-mode: forwards;
   -webkit-animation-fill-mode: forwards;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .logo > svg {
