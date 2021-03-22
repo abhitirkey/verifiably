@@ -23,12 +23,12 @@
   left: 6rem;
 
   /* Animation properties */
-  /* animation: fade-in-left 1s;
+  animation: fade-in-left 1s;
   -webkit-animation: fade-in-left 1s;
   animation-delay: 1s;
   -webkit-animation-delay: 1s;
   animation-fill-mode: forwards;
-  -webkit-animation-fill-mode: forwards; */
+  -webkit-animation-fill-mode: forwards;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -39,11 +39,11 @@
   position: absolute;
 
 
-  /* animation: rotate-flash-logo 2s;
+  animation: rotate-flash-logo 2s;
   animation-fill-mode: forwards;
   animation: rotate-flash-logo 2s;
   -webkit-animation: rotate-flash-logo 2s;
-  -webkit-animation-fill-mode: forwards; */
+  -webkit-animation-fill-mode: forwards;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
