@@ -42,6 +42,9 @@
   animation: rotate-flash-logo 2s;
   -webkit-animation: rotate-flash-logo 2s;
   -webkit-animation-fill-mode: forwards;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 @keyframes rotate-flash-logo {
