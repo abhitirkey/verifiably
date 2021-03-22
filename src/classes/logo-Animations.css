@@ -14,7 +14,7 @@
 
 .logo > .erifiably {
 
-  opacity: 1;
+  opacity: 0;
   position: absolute;
   font-size: 2.5rem;
   font-weight: bolder;
@@ -23,9 +23,11 @@
   left: 6rem;
 
   /* Animation properties */
-  animation: fade-in-left 1s;
-  -webkit-animation: fade-in-left 1s;
+  animation-name: fade-in-left;
+  animation-duration: 1s;
   animation-delay: 1s;
+  -webkit-animation-name: fade-in-left;
+  -webkit-animation-duration: 1s;
   -webkit-animation-delay: 1s;
   animation-fill-mode: forwards;
   -webkit-animation-fill-mode: forwards;
@@ -35,14 +37,14 @@
 }
 
 .logo > svg {
-  opacity: 1;
+  opacity: 0;
   position: absolute;
 
-
-  animation: rotate-flash-logo 2s;
+  animation-name: rotate-flash-logo;
+  animation-duration: 2s;
   animation-fill-mode: forwards;
-  animation: rotate-flash-logo 2s;
-  -webkit-animation: rotate-flash-logo 2s;
+  -webkit-animation-name: rotate-flash-logo;
+  -webkit-animation-duration: 2s;
   -webkit-animation-fill-mode: forwards;
   -webkit-appearance: none;
   -moz-appearance: none;
