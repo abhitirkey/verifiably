@@ -1,11 +1,20 @@
 <template>
     <div class="contactFormComponent">
         <div class="typewriter">
-            <h1 class="fadeInHeader">Let's get started. <font-awesome-icon icon="coffee" /></h1>
+            <p class="fadeInHeader">Let's get started. <font-awesome-icon icon="coffee" /></p>
         </div>
         <div class="formContainer fadeInForm">
-            <span v-if="step > 1" @click="goBack()"><font-awesome-icon icon="arrow-left"/></span>
-            <span v-if="step === 1" class="grayed"><font-awesome-icon icon="arrow-left" style="color: rgb(165, 165, 165);"/></span>
+
+            <!-- Conditional rendering for desktop or mobile -->
+            <div v-if="!isMobile()">
+                <span class="NavigationIconSpan" v-if="step > 1" @click="goBack()"><font-awesome-icon icon="caret-left"/></span>
+                <span class="NavigationIconSpan grayed" v-else-if="step === 1"><font-awesome-icon icon="caret-left" style="color: rgb(165, 165, 165);"/></span>
+            </div>
+            <div v-else>
+                <span class="NavigationIconSpan" v-if="step > 1" @click="goBack()"><font-awesome-icon icon="caret-up"/></span>
+                <span class="NavigationIconSpan grayed" v-else-if="step === 1"><font-awesome-icon icon="caret-up" style="color: rgb(165, 165, 165);"/></span>
+            </div>
+            
             <!-- <div class="form"> -->
                 <transition v-on:after-enter="afterEnter" v-bind:enter-active-class="enterClasses" v-bind:leave-active-class="leaveClasses">
                     <div v-if="step === 1" class="input__group" key="step1">
@@ -22,7 +31,8 @@
                             autofocus 
                             v-on:input="fieldChangeHandler()"
                             v-on:keyup.enter="goForward()"
-                            v-on:keyup.right="goForward()"
+                            v-on:keyup.down="goForward()"
+                            
                             />
                         <span v-if="!formData.fieldValid" class="invalidFieldMsg">{{formData.invalidMsg}}</span>
                     </div>
@@ -38,8 +48,9 @@
                             name="email" 
                             placeholder="Type your email here" 
                             v-on:input="fieldChangeHandler()"
-                            v-on:keyup.right="goForward()"
-                            v-on:keyup.left="goBack()"
+                            v-on:keyup.enter="goForward()"
+                            v-on:keyup.down="goForward()"
+                            v-on:keyup.up="goBack()"
                         />
                         <span v-if="!formData.fieldValid" class="invalidFieldMsg">{{formData.invalidMsg}}</span>
                     </div>
@@ -55,8 +66,9 @@
                             name="phone" 
                             placeholder="Type your number here" 
                             v-on:input="fieldChangeHandler()"
-                            v-on:keyup.right="goForward()"
-                            v-on:keyup.left="goBack()"
+                            v-on:keyup.enter="goForward()"
+                            v-on:keyup.down="goForward()"
+                            v-on:keyup.up="goBack()"
                         />
                         <span v-if="!formData.fieldValid" class="invalidFieldMsg">{{formData.invalidMsg}}</span>
                     </div>
@@ -71,14 +83,16 @@
                             name="message" 
                             placeholder="Type your message here" 
                             v-on:input="fieldChangeHandler()"
-                            v-on:keyup.left="goBack()"
+                            v-on:keyup.enter="goForward()"
+                            v-on:keyup.up="goBack()"
                         />
                         <span v-if="!formData.fieldValid" class="invalidFieldMsg">{{formData.invalidMsg}}</span>
                     </div>
                 </transition>
             <!-- </div> -->
-            <span v-if="step !== 4" @click="goForward()"><font-awesome-icon icon="arrow-right"/></span>
-            <span v-if="step === 4" class="grayed"><font-awesome-icon icon="paper-plane"/></span>
+            <span class="NavigationIconSpan" v-if="step !== 4 && !isMobile()" @click="goForward()"><font-awesome-icon icon="caret-right"/></span>
+            <span class="NavigationIconSpan" v-else @click="goForward()"><font-awesome-icon icon="caret-down"/></span>
+            <span class="NavigationIconSpan" v-if="step === 4"><font-awesome-icon icon="paper-plane"/></span>
         </div>
     </div>
 </template>
@@ -149,8 +163,8 @@ export default {
         goBack() {
             if(!this.formData.fieldValid)
                 this.formData.fieldValid = true;
-            this.enterClasses = 'animate__animated animate__backInLeft delay';
-            this.leaveClasses = 'animate__animated animate__backOutRight';
+            this.enterClasses = this.isMobile() ? 'animate__animated animate__fadeInDownBig' : 'animate__animated animate__backInRight delay';
+            this.leaveClasses = this.isMobile() ? 'animate__animated animate__fadeOutDownBig' : 'animate__animated animate__backOutLeft';
             this.step -= 1;
         },
         goForward() {
@@ -204,8 +218,8 @@ export default {
             }
 
             if(valid){
-                this.enterClasses = 'animate__animated animate__backInRight delay';
-                this.leaveClasses = 'animate__animated animate__backOutLeft';
+                this.enterClasses = this.isMobile() ? 'animate__animated animate__fadeInUpBig' : 'animate__animated animate__backInRight delay';
+                this.leaveClasses = this.isMobile() ? 'animate__animated animate__fadeOutUpBig' : 'animate__animated animate__backOutLeft';
                 this.step += 1;
             }
         },
@@ -220,6 +234,7 @@ export default {
 </script>
 
 <style scoped>
+
 .contactFormComponent {
     position: absolute;
     z-index: 10;
@@ -237,19 +252,22 @@ export default {
 }
 
 .formContainer {
-    position: absolute;
-    height:10rem;
+    /* position: absolute; */
+    position: relative;
+    /* margin-top: 1rem; */
+    height:75%;
     width: inherit;
     top: 25%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     overflow-x: hidden;
     overflow-y: hidden;
     opacity: 0;
 }
 
-.formContainer > span {
+.NavigationIconSpan {
     cursor: pointer;
     font-size: 2rem;
     text-align: center;
@@ -313,7 +331,7 @@ export default {
 
 .fadeInForm {
     animation: fadeIn 1s;
-    animation-delay: 3.5s;
+    animation-delay: 2.5s;
     animation-fill-mode: forwards;
 }
 
@@ -354,7 +372,7 @@ input[type=number] {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.103); 
 }
 
-.typewriter h1{
+.typewriter p{
   visibility: hidden;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   border-right: .15em solid transparent; /* The typwriter cursor */
@@ -364,8 +382,10 @@ input[type=number] {
   animation: 
     typing 1.5s steps(40, end),
     blink-caret .75s step-end;
-  animation-delay: 2s;
+  animation-delay: 1s;
   animation-fill-mode: forwards;
+  font-size: 5vw;
+  font-weight: bolder;
 }
 
 /* The typing effect */
@@ -378,6 +398,20 @@ input[type=number] {
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: rgb(34, 34, 34); }
+}
+
+/* For desktop view only */
+@media only screen and (min-width: 768px){
+
+    .typewriter p {
+        font-size: 2rem;
+    }
+
+    .formContainer {
+      flex-direction: row;
+      height: 50%;
+      justify-content: space-around;
+    }
 }
 
 /* .formFieldEnterRight {

@@ -1,16 +1,19 @@
 <template>
   <div class="app_container">    
-    <div class="logo">
+    <div class="logo full-logo-animation" :class="{'animateJourney' : Journey}">
         <LogoSVG/>
         <span class="erifiably">erifiably.</span>
+        <span class="tagline">Because transparency matters</span>
     </div>
 
-  <!-- <div class="IntroContainer" :class="{'fadeOutIntro' : Journey}">
-    <p>This is what we do. This is how you'll benefit.</p>
-    <button class="BeginBtn" @click="BeginJourney()">Begin the journey</button>
-  </div> -->
+  <transition name="fadeIntro" appear>
+    <div class="IntroContainer" v-if="!Journey">
+      <p>This is what we do. This is how you'll benefit.</p>
+      <button class="BeginBtn" @click="BeginJourney()">Begin the journey</button>
+    </div>
+  </transition>
 
-  <!-- <Contact v-if="Journey" :Journey="Journey"/> -->
+  <Contact v-if="Journey" :Journey="Journey"/>
     <!-- <Header/> -->
     <!-- <transition name="view" appear enter-active-class="animate__animated animate__zoomInRight delay" leave-active-class="animate__animated animate__zoomOutLeft"> -->
       <!-- <router-view/> -->
@@ -20,11 +23,12 @@
 
 <script>
 import LogoSVG from './assets/verifiably_check.vue'
+import Contact from './components/Contact.vue'
 
 export default {
   name: "App",
   components: {
-    LogoSVG
+    LogoSVG, Contact
   },
   data() {
     return {
@@ -61,24 +65,31 @@ export default {
   justify-content: center;
   align-items: center;
 }
-/* 
+
+.fadeIntro-enter-active {
+  opacity: 0;
+  animation: fadeInRight 1s;
+  animation-delay: 3s;
+  animation-fill-mode: forwards;
+}
+
+.fadeIntro-leave-active {
+  animation: fadeOutRight 1s;
+  animation-fill-mode: forwards;
+}
+
 .IntroContainer {
-    opacity: 0;
     position: relative;
     text-align: center;
     top: 5rem;
-    animation: fadeInRight 1s;
-    animation-delay: 5s;
-    animation-fill-mode: forwards;
-    z-index: 100;
 }
 
 .IntroContainer > p {
   font-size: 2rem;
   color: rgb(165, 165, 165);
-} */
+}
 
-/* .BeginBtn {
+.BeginBtn {
   margin-top: 1.5rem;
   background-color: transparent;
   color: gray;
@@ -101,9 +112,10 @@ export default {
   cursor: pointer;
 }
 
-.fadeOutIntro {
-  opacity: 1;
-  animation: fadeOutRight 1s;
-  animation-fill-mode: forwards;
-} */
+@keyframes hideThis {
+  to {
+    display: none;
+  }
+}
+
 </style>
