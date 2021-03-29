@@ -4,8 +4,8 @@ import App from "./App.vue";
 import VueRouter from 'vue-router'
 import Vue2TouchEvents from 'vue2-touch-events'
 
-import Home from './components/Home.vue'
-import Contact from './components/Contact.vue'
+import Home from './pages/Home.vue'
+import Contact from './pages/Contact.vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCoffee, faCaretLeft, faCaretRight, faPaperPlane, faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons'
