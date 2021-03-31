@@ -59,10 +59,10 @@ export default {
 .IntroContainer > p {
   font-size: 2rem;
   color: rgb(165, 165, 165);
+  margin-bottom: 2rem;
 }
 
 .IntroContainer > a {
-  margin-top: 1.5rem;
   background-color: transparent;
   color: gray;
   padding: 1rem;

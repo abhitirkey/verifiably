@@ -1,5 +1,5 @@
 <template>
-    <transition appear enter-active-class="animate__animated animate__fadeIn">
+    <transition appear enter-active-class="animate__animated animate__backInDown">
     <nav>
         <router-link to="/home"><VerifiablyLogo/></router-link>
         <div class="nav_links_container">
@@ -38,6 +38,11 @@ export default {
         background-color: rgba(255, 255, 255, 0.842);
     }
 
+    /* .nav_links_container {
+        display: none;
+    } */
+
+    
     .nav_links_container > a {
         text-decoration: none;
         margin: 0 2rem;
@@ -46,5 +51,13 @@ export default {
         color: gray;
         mix-blend-mode: difference;
         background: transparent;
+    }   
+
+    @media only screen and (min-width: 768px) {
+        
+        /* .nav-links-container{
+            display: flex;
+        } */
+
     }
 </style>

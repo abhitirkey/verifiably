@@ -8,7 +8,7 @@
   </div> -->
   <div class="app_container">
     <Header v-if="checkUrl() !== '/'"/>
-    <transition mode="out in" enter-active-class="animate__animated animate__zoomIn" leave-active-class="animate__animated animate__zoomOut">
+    <transition mode="out in" enter-active-class="animate__animated animate__zoomInDown delay" leave-active-class="animate__animated animate__zoomOutRight">
       <router-view :key="$route.path" />
     </transition>
   </div>
@@ -87,9 +87,33 @@ export default {
   opacity: 0;
 }
 
-/* The following classes will be used in page components to keep the website horizontal: */
+.row {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
 
- .outer-wrapper {
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.slide {
+   padding: 3rem 0;
+}
+
+.delay {
+  /* For transition delays */
+  animation-delay: 0.7s;
+}
+
+@media only screen and (min-width: 768px) {
+    .row {
+      flex-direction: row;
+    }
+
+    /* The following classes will be used in page components to keep the website horizontal: */
+   .outer-wrapper {
     position: absolute;
     width: 100vh;
     height: 100vw;
@@ -110,15 +134,18 @@ export default {
     width: 100vw;
     height: 100vh;
     /* To accomodate for the height of the navbar */
-    padding-top: 6rem; 
+    padding: 6rem 0 0 0; 
   }
 
   .inner-wrapper {
     display: flex;
     transform: rotate(90deg) translateY(-100vh);
     transform-origin: top left;
-    width: 400vw;
   }
 
-/* Horizontal-izing classes end here */
+  /* Horizontal-izing classes end here */
+}
+
+
+
 </style>
