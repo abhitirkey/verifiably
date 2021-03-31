@@ -4,16 +4,27 @@ import App from "./App.vue";
 import VueRouter from 'vue-router'
 import Vue2TouchEvents from 'vue2-touch-events'
 
-import Home from './pages/Home.vue'
+import LandingPage from './pages/LandingPage.vue'
+import Home from './pages/Home/Home.vue'
 import Contact from './pages/Contact.vue'
+import Test1 from './pages/Test1.vue'
+import Test2 from './pages/Test2.vue'
+import Test from './pages/Test.vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCoffee, faCaretLeft, faCaretRight, faPaperPlane, faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons'
+import { faCoffee, faCaretLeft, faCaretRight, faPaperPlane, faCaretUp, faCaretDown, faFireExtinguisher } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faCoffee, faCaretLeft, faCaretRight, faCaretUp, faCaretDown, faPaperPlane)
+library.add(faCoffee, faCaretLeft, faCaretRight, faCaretUp, faCaretDown, faPaperPlane, faFireExtinguisher)
 
-Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+const Fragment = {
+  functional: true,
+  render: (h, ctx) => ctx.children
+};
+
+Vue.component('fragment', Fragment);
+Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.use(Vue2TouchEvents);
 Vue.use(VueRouter);
@@ -35,11 +46,27 @@ Vue.mixin({
 const routes = [
   {
     path: '/',
+    component: LandingPage
+  },
+  {
+    path: '/home',
     component: Home
   },
   {
     path: '/contact',
     component: Contact
+  },
+  {
+    path: '/test',
+    component: Test
+  },
+  {
+    path: '/test1',
+    component: Test1
+  },
+  {
+    path: '/test2',
+    component: Test2
   }
 ];
 

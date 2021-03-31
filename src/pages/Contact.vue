@@ -1,106 +1,108 @@
 <template>
-    <div class="contactFormComponent">
-        <div class="typewriter">
-            <p class="fadeInHeader">Let's get started. <font-awesome-icon icon="coffee" /></p>
-        </div>
-        <div class="formContainer fadeInForm">
+    <div class="contactPage__container">
+        <div class="contactFormComponent">
+            <div class="typewriter">
+                <p class="fadeInHeader">Let's get started. <font-awesome-icon icon="coffee" /></p>
+            </div>
+            <div class="formContainer fadeInForm">
 
-            <!-- Conditional rendering for desktop or mobile -->
-            <div v-if="!isMobile()">
-                <span class="NavigationIconSpan" v-if="step > 1" @click="goBack()"><font-awesome-icon icon="caret-left"/></span>
-                <span class="NavigationIconSpan grayed" v-else-if="step === 1"><font-awesome-icon icon="caret-left" style="color: rgb(165, 165, 165);"/></span>
-            </div>
-            <div v-else>
-                <span class="NavigationIconSpan" v-if="step > 1" @click="goBack()"><font-awesome-icon icon="caret-up"/></span>
-                <span class="NavigationIconSpan grayed" v-else-if="step === 1"><font-awesome-icon icon="caret-up" style="color: rgb(165, 165, 165);"/></span>
-            </div>
-            
-            <!-- <div class="form"> -->
-                <transition v-on:after-enter="afterEnter" v-bind:enter-active-class="enterClasses" v-bind:leave-active-class="leaveClasses">
-                    <div v-if="step === 1" class="input__group" key="step1">
-                        <label for="contactField1">Your Name</label>
-                        <input 
-                            ref="contactField1" 
-                            class="textField" 
-                            name="name" 
-                            :class="{'shakeField' : formData.shakeField}" 
-                            @animationend="formData.shakeField = false" 
-                            type="text" 
-                            v-model="formData.name" 
-                            placeholder="Type your name here" 
-                            autofocus 
-                            v-on:input="fieldChangeHandler()"
-                            v-on:keyup.enter="goForward()"
-                            v-on:keyup.down="goForward()"
-                            
+                <!-- Conditional rendering for desktop or mobile -->
+                <div v-if="!isMobile()">
+                    <span class="NavigationIconSpan" v-if="step > 1" @click="goBack()"><font-awesome-icon icon="caret-left"/></span>
+                    <span class="NavigationIconSpan grayed" v-else-if="step === 1"><font-awesome-icon icon="caret-left" style="color: rgb(165, 165, 165);"/></span>
+                </div>
+                <div v-else>
+                    <span class="NavigationIconSpan" v-if="step > 1" @click="goBack()"><font-awesome-icon icon="caret-up"/></span>
+                    <span class="NavigationIconSpan grayed" v-else-if="step === 1"><font-awesome-icon icon="caret-up" style="color: rgb(165, 165, 165);"/></span>
+                </div>
+                
+                <!-- <div class="form"> -->
+                    <transition v-on:after-enter="afterEnter" v-bind:enter-active-class="enterClasses" v-bind:leave-active-class="leaveClasses">
+                        <div v-if="step === 1" class="input__group" key="step1">
+                            <label for="contactField1">Your Name</label>
+                            <input 
+                                ref="contactField1" 
+                                class="textField" 
+                                name="name" 
+                                :class="{'shakeField' : formData.shakeField}" 
+                                @animationend="formData.shakeField = false" 
+                                type="text" 
+                                v-model="formData.name" 
+                                placeholder="Type your name here" 
+                                autofocus 
+                                v-on:input="fieldChangeHandler()"
+                                v-on:keyup.enter="goForward()"
+                                v-on:keyup.down="goForward()"
+                                
+                                />
+                            <span v-if="!formData.fieldValid" class="invalidFieldMsg">{{formData.invalidMsg}}</span>
+                        </div>
+                        <div v-if="step === 2" class="input__group" key="step2">
+                            <label for="contactField2">Your Email</label>
+                            <input 
+                                ref="contactField2" 
+                                class="textField" 
+                                :class="{'shakeField' : formData.shakeField}" 
+                                @animationend="formData.shakeField = false" 
+                                type="email" 
+                                v-model="formData.email" 
+                                name="email" 
+                                placeholder="Type your email here" 
+                                v-on:input="fieldChangeHandler()"
+                                v-on:keyup.enter="goForward()"
+                                v-on:keyup.down="goForward()"
+                                v-on:keyup.up="goBack()"
                             />
-                        <span v-if="!formData.fieldValid" class="invalidFieldMsg">{{formData.invalidMsg}}</span>
-                    </div>
-                    <div v-if="step === 2" class="input__group" key="step2">
-                        <label for="contactField2">Your Email</label>
-                        <input 
-                            ref="contactField2" 
-                            class="textField" 
-                            :class="{'shakeField' : formData.shakeField}" 
-                            @animationend="formData.shakeField = false" 
-                            type="email" 
-                            v-model="formData.email" 
-                            name="email" 
-                            placeholder="Type your email here" 
-                            v-on:input="fieldChangeHandler()"
-                            v-on:keyup.enter="goForward()"
-                            v-on:keyup.down="goForward()"
-                            v-on:keyup.up="goBack()"
-                        />
-                        <span v-if="!formData.fieldValid" class="invalidFieldMsg">{{formData.invalidMsg}}</span>
-                    </div>
-                    <div v-if="step === 3" class="input__group" key="step3">
-                        <label for="contactField3">Your Contact Number</label>
-                        <input 
-                            ref="contactField3" 
-                            class="textField" 
-                            :class="{'shakeField' : formData.shakeField}"
-                            @animationend="formData.shakeField = false"  
-                            type="number" 
-                            v-model="formData.phone" 
-                            name="phone" 
-                            placeholder="Type your number here" 
-                            v-on:input="fieldChangeHandler()"
-                            v-on:keyup.enter="goForward()"
-                            v-on:keyup.down="goForward()"
-                            v-on:keyup.up="goBack()"
-                        />
-                        <span v-if="!formData.fieldValid" class="invalidFieldMsg">{{formData.invalidMsg}}</span>
-                    </div>
-                    <div v-if="step === 4" class="input__group" key="step4">
-                        <label for="contactField4">Your Message</label>
-                        <textarea 
-                            ref="contactField4" 
-                            class="messageField" 
-                            :class="{'shakeField' : formData.shakeField}"
-                            @animationend="formData.shakeField = false"  
-                            v-model="formData.message" 
-                            name="message" 
-                            placeholder="Type your message here" 
-                            v-on:input="fieldChangeHandler()"
-                            v-on:keyup.enter="goForward()"
-                            v-on:keyup.up="goBack()"
-                        />
-                        <span v-if="!formData.fieldValid" class="invalidFieldMsg">{{formData.invalidMsg}}</span>
-                    </div>
-                </transition>
-            <!-- </div> -->
-            <span class="NavigationIconSpan" v-if="step !== 4 && !isMobile()" @click="goForward()"><font-awesome-icon icon="caret-right"/></span>
-            <span class="NavigationIconSpan" v-else @click="goForward()"><font-awesome-icon icon="caret-down"/></span>
-            <span class="NavigationIconSpan" v-if="step === 4"><font-awesome-icon icon="paper-plane"/></span>
+                            <span v-if="!formData.fieldValid" class="invalidFieldMsg">{{formData.invalidMsg}}</span>
+                        </div>
+                        <div v-if="step === 3" class="input__group" key="step3">
+                            <label for="contactField3">Your Contact Number</label>
+                            <input 
+                                ref="contactField3" 
+                                class="textField" 
+                                :class="{'shakeField' : formData.shakeField}"
+                                @animationend="formData.shakeField = false"  
+                                type="number" 
+                                v-model="formData.phone" 
+                                name="phone" 
+                                placeholder="Type your number here" 
+                                v-on:input="fieldChangeHandler()"
+                                v-on:keyup.enter="goForward()"
+                                v-on:keyup.down="goForward()"
+                                v-on:keyup.up="goBack()"
+                            />
+                            <span v-if="!formData.fieldValid" class="invalidFieldMsg">{{formData.invalidMsg}}</span>
+                        </div>
+                        <div v-if="step === 4" class="input__group" key="step4">
+                            <label for="contactField4">Your Message</label>
+                            <textarea 
+                                ref="contactField4" 
+                                class="messageField" 
+                                :class="{'shakeField' : formData.shakeField}"
+                                @animationend="formData.shakeField = false"  
+                                v-model="formData.message" 
+                                name="message" 
+                                placeholder="Type your message here" 
+                                v-on:input="fieldChangeHandler()"
+                                v-on:keyup.enter="goForward()"
+                                v-on:keyup.up="goBack()"
+                            />
+                            <span v-if="!formData.fieldValid" class="invalidFieldMsg">{{formData.invalidMsg}}</span>
+                        </div>
+                    </transition>
+                <!-- </div> -->
+                <span class="NavigationIconSpan" v-if="step !== 4 && !isMobile()" @click="goForward()"><font-awesome-icon icon="caret-right"/></span>
+                <span class="NavigationIconSpan" v-else @click="goForward()"><font-awesome-icon icon="caret-down"/></span>
+                <span class="NavigationIconSpan" v-if="step === 4"><font-awesome-icon icon="paper-plane"/></span>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+
 export default {
     name: "Contact",
-    props: ["Journey"],
     data () {
         return {
             formData: {
@@ -234,6 +236,14 @@ export default {
 </script>
 
 <style scoped>
+
+.contactPage__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
 
 .contactFormComponent {
     position: absolute;

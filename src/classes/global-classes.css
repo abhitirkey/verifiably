@@ -1,0 +1,45 @@
+button {
+    opacity: 0.9;
+}
+
+.boldText {
+    font-weight: bolder;
+}
+
+.TextLeft {
+    text-align: left;
+}
+
+.TextRight {
+    text-align: right;
+}
+
+.TextCenter {
+    text-align: center;
+}
+
+.TextJustify {
+    text-align: justify;
+}
+
+
+button:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.hollowBtn {
+    background: none;
+    padding: 1rem;
+    text-transform: uppercase;
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
+    font-size: 1rem;
+}
+
+.hollowBtn:active, .hollowBtn:focus {
+    outline: none;
+}

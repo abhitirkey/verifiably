@@ -1,5 +1,5 @@
 <template>
-    <div class="logo">
+    <div class="verifiably_logo">
         <LogoSVG/>
         <span class="erifiably">erifiably.</span>
     </div>
@@ -15,8 +15,18 @@ export default {
 </script>
 
 <style scoped>
-    .logo {
+    .verifiably_logo {
         position: relative;
         display: flex;
+        transform: scale(0.6);
+    }
+
+    .verifiably_logo > .erifiably {
+        position: absolute;
+        top: 2.5rem;
+        left: 5.7rem;
+        font-size: 3.5rem;
+        font-weight: bolder;
+        color: #6e6e6e;
     }
 </style>

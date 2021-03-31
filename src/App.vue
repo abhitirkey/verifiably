@@ -1,39 +1,28 @@
 <template>
-  <div class="app_container">    
-    
-    <Header/>
-
-    <div class="logo full-logo-animation" :class="{'animateJourney' : Journey}">
-        <LogoSVG/>
-        <span class="erifiably">erifiably.</span>
-        <span class="tagline">Because transparency matters</span>
-    </div>
-
-    <transition name="fadeIntro" appear>
-      <div class="IntroContainer" v-if="!Journey">
-        <p>This is what we do. This is how you'll benefit.</p>
-        <button class="BeginBtn" @click="BeginJourney()">Begin the journey</button>
-      </div>
-    </transition>
-
+  <!-- <div class="app_container">  -->  
   <!-- <Contact v-if="Journey" :Journey="Journey"/> -->
     <!-- <Header/> -->
-    <!-- <transition name="view" appear enter-active-class="animate__animated animate__zoomInRight delay" leave-active-class="animate__animated animate__zoomOutLeft"> -->
-      <!-- <router-view/> -->
-    <!-- </transition> -->
+    <!-- <transition mode="out-in" name="fade">
+      <router-view :key="$route.path" />
+    </transition>
+  </div> -->
+  <div class="app_container">
+    <Header v-if="checkUrl() !== '/'"/>
+    <transition mode="out in" enter-active-class="animate__animated animate__zoomIn" leave-active-class="animate__animated animate__zoomOut">
+      <router-view :key="$route.path" />
+    </transition>
   </div>
 </template>
 
 <script>
 
 import Header from './components/Header.vue'
-import LogoSVG from './assets/verifiably_check.vue'
+// import Intro from './components/LandingPage.vue'
 // import Contact from './components/Contact.vue'
 
 export default {
   name: "App",
   components: {
-    LogoSVG, 
     Header
   },
   data() {
@@ -44,13 +33,17 @@ export default {
   methods: {
     BeginJourney() {
       this.Journey = true;
+    },
+    checkUrl() {
+      return window.location.pathname;
     }
   }
 };
 </script>
 
 <style>
-@import './classes/logo-Animations.css';
+
+@import 'classes/global-classes.css';
 
 * {
   /* font-family: Avenir, Helvetica, Arial, sans-serif; */
@@ -63,68 +56,69 @@ export default {
 }
 
 .app_container {
-  height: 100vh;
-  width: 100%;
   overflow-x: hidden;
   overflow-y: hidden;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 
-.fadeIntro-enter-active {
-  opacity: 0;
-  animation: fadeInRight 1s;
-  animation-delay: 3s;
-  animation-fill-mode: forwards;
-}
+/* This one emulates React.Fragment :P */
 
-.fadeIntro-leave-active {
-  animation: fadeOutRight 1s;
-  animation-fill-mode: forwards;
-}
-
-.IntroContainer {
-    position: relative;
-    text-align: center;
-    top: 5rem;
-}
-
-.IntroContainer > p {
-  font-size: 2rem;
-  color: rgb(165, 165, 165);
-}
-
-.BeginBtn {
-  margin-top: 1.5rem;
-  background-color: transparent;
-  color: gray;
-  padding: 1rem;
-  border-radius: 5px;
-  text-transform: uppercase;
-  border: none;
-  box-shadow: 5px 5px 19px 0px #00000017;
-}
-
-.BeginBtn:focus {
-  outline: none;
-}
-
-.BeginBtn:active {
-  box-shadow: none;
-}
-
-.BeginBtn:hover {
-  cursor: pointer;
-}
-
-@keyframes hideThis {
-  to {
-    display: none;
-  }
+.fragment {
+  display: contents;
+  width: inherit;
+  height: inherit;
+  color: inherit;
+  font-size: inherit;
 }
 
 .flex-spacer {
   flex: 1;
 }
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* The following classes will be used in page components to keep the website horizontal: */
+
+ .outer-wrapper {
+    position: absolute;
+    width: 100vh;
+    height: 100vw;
+    transform: rotate(-90deg) translateX(-100vh);
+    transform-origin: top left;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .slide {
+    width: 100vw;
+    height: 100vh;
+    /* To accomodate for the height of the navbar */
+    padding-top: 6rem; 
+  }
+
+  .inner-wrapper {
+    display: flex;
+    transform: rotate(90deg) translateY(-100vh);
+    transform-origin: top left;
+    width: 400vw;
+  }
+
+/* Horizontal-izing classes end here */
 </style>
