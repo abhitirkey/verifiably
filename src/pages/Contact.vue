@@ -17,7 +17,7 @@
                 </div>
                 
                 <!-- <div class="form"> -->
-                    <transition v-on:after-enter="afterEnter" v-bind:enter-active-class="enterClasses" v-bind:leave-active-class="leaveClasses">
+                    <transition appear v-on:after-enter="afterEnter" v-bind:enter-active-class="enterClasses" v-bind:leave-active-class="leaveClasses">
                         <div v-if="step === 1" class="input__group" key="step1">
                             <label for="contactField1">Your Name</label>
                             <input 
@@ -29,11 +29,10 @@
                                 type="text" 
                                 v-model="formData.name" 
                                 placeholder="Type your name here" 
-                                autofocus 
                                 v-on:input="fieldChangeHandler()"
                                 v-on:keyup.enter="goForward()"
                                 v-on:keyup.down="goForward()"
-                                
+                                focus
                                 />
                             <span v-if="!formData.fieldValid" class="invalidFieldMsg">{{formData.invalidMsg}}</span>
                         </div>
@@ -228,10 +227,7 @@ export default {
         afterEnter: function () {
             this.$refs['contactField'+this.step].focus();
         }
-    },
-    created() {
-        this.$refs.contactField1.focus();
-    },
+    }
 }
 </script>
 

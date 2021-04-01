@@ -8,7 +8,7 @@
   </div> -->
   <div class="app_container">
     <Header v-if="checkUrl() !== '/'"/>
-    <transition mode="out in" enter-active-class="animate__animated animate__zoomInDown delay" leave-active-class="animate__animated animate__zoomOutRight">
+    <transition mode="out-in" enter-active-class="animate__animated animate__zoomInDown" leave-active-class="animate__animated animate__zoomOutRight">
       <router-view :key="$route.path" />
     </transition>
   </div>

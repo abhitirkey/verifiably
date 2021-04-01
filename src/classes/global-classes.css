@@ -2,6 +2,16 @@ button {
     opacity: 0.9;
 }
 
+.unstyledButton {
+    border: none;
+    background: none;
+    color: initial;
+}
+
+.unstyledButton:focus {
+    outline: none;
+}
+
 .boldText {
     font-weight: bolder;
 }

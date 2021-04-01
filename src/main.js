@@ -5,17 +5,17 @@ import VueRouter from 'vue-router'
 import Vue2TouchEvents from 'vue2-touch-events'
 
 import LandingPage from './pages/LandingPage.vue'
-import Home from './pages/Home/Home.vue'
-import Contact from './pages/Contact.vue'
+// import Home from './pages/Home/Home.vue'
+// import Contact from './pages/Contact.vue'
 import Test1 from './pages/Test1.vue'
 import Test2 from './pages/Test2.vue'
 import Test from './pages/Test.vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCoffee, faCaretLeft, faCaretRight, faPaperPlane, faCaretUp, faCaretDown, faFireExtinguisher } from '@fortawesome/free-solid-svg-icons'
+import { faCoffee, faCaretLeft, faCaretRight, faPaperPlane, faCaretUp, faCaretDown, faFireExtinguisher, faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faCoffee, faCaretLeft, faCaretRight, faCaretUp, faCaretDown, faPaperPlane, faFireExtinguisher)
+library.add(faCoffee, faCaretLeft, faCaretRight, faCaretUp, faCaretDown, faPaperPlane, faFireExtinguisher, faBars, faTimes)
 
 
 const Fragment = {
@@ -33,7 +33,8 @@ Vue.config.productionTip = false;
 Vue.mixin({
   methods: {
     isMobile() {
-      if( screen.width <= 760 ) {
+      const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+      if( vw < 768 ) {
           return true;
       }
       else {
@@ -50,11 +51,11 @@ const routes = [
   },
   {
     path: '/home',
-    component: Home
+    component: () => import(/* webpackPrefetch: true */ './pages/Home/Home.vue')
   },
   {
     path: '/contact',
-    component: Contact
+    component: () => import(/* webpackPrefetch: true */ './pages/Contact.vue')
   },
   {
     path: '/test',
