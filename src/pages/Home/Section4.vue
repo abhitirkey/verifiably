@@ -1,7 +1,7 @@
 <template>
   <div class="section four">
         <div class="col section4__firstCol">
-            <img data-lazy="./BankVendor@2x.png"/>
+            <img src="./BankVendor@2x.png"/>
             <div style="text-align: justify; width: 80%;">
                 <span class="boldText">UNLOCK</span>
                 <h1>Private Financial Data Sharing</h1>
@@ -10,7 +10,7 @@
             <button class="hollowBtn">Learn More</button>
         </div>
         <div class="col section4__secondCol">
-            <img data-lazy="./Healthcare@2x.png"/>
+            <img src="./Healthcare@2x.png"/>
             <div style="text-align: justify; width: 80%;">
                 <span class="boldText">UNLOCK</span>
                 <h1>Private Data Sharing for AI in Healthcare</h1>

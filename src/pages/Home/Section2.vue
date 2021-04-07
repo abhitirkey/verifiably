@@ -8,7 +8,7 @@
             <p>Step 3 is where the trouble starts. Because the data must be replicated for use, a host of problems are introduced.</p>
             </div>
             <div class="col col2">
-                <img data-lazy="./ChallengeDiagram.png" alt="ChallengeDiagram" class="ChallengeDiagram"/>
+                <img src="./ChallengeDiagram.png" alt="ChallengeDiagram" class="ChallengeDiagram"/>
             </div>
         </div>
         <div class="row row2">
@@ -16,19 +16,19 @@
                 <span class="boldText" style="font-size: 1.2rem;">PROBLEMS ASSOCIATED WITH DECRYPTION</span>
                 <div class="problems__Grid">
                     <div>
-                        <img data-lazy="https://img.icons8.com/ios-filled/100/000000/openvpn.png"/>
+                        <img src="https://img.icons8.com/ios-filled/100/000000/openvpn.png"/>
                         <span>Placeholder</span>
                     </div>             
                     <div>
-                        <img data-lazy="https://img.icons8.com/ios-filled/100/000000/openvpn.png"/>
+                        <img src="https://img.icons8.com/ios-filled/100/000000/openvpn.png"/>
                         <span>Placeholder</span>
                     </div>             
                     <div>
-                        <img data-lazy="https://img.icons8.com/ios-filled/100/000000/openvpn.png"/>
+                        <img src="https://img.icons8.com/ios-filled/100/000000/openvpn.png"/>
                         <span>Placeholder</span>
                     </div>             
                     <div>
-                        <img data-lazy="https://img.icons8.com/ios-filled/100/000000/openvpn.png"/>
+                        <img src="https://img.icons8.com/ios-filled/100/000000/openvpn.png"/>
                         <span>Placeholder</span>
                     </div>             
                 </div>

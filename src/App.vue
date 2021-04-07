@@ -9,7 +9,7 @@
   <div class="app_container" @wheel="ScrollHandler">
     <Header v-if="checkUrl() !== '/'"/>
     <ScrollButton type="left" :class="{'visible' : currentSection > 1}" :sectionID="'#section'+(currentSection-1)" @click.native="goToPreviousSection"/>
-    <transition mode="out-in" enter-active-class="animate__animated animate__zoomInDown pageEnter" leave-active-class="animate__animated animate__zoomOutRight pageLeave">
+    <transition mode="out-in" enter-active-class="animate__animated animate__zoomInDown pageEnter" leave-active-class="animate__animated animate__zoomOut pageLeave">
       <router-view :key="$route.path" />
     </transition>
     <ScrollButton type="right" :class="{'visible' : currentSection < totalSections}" :sectionID="'#section'+(currentSection+1)" @click.native="goToNextSection"/> 
