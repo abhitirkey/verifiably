@@ -5,17 +5,12 @@ import VueRouter from 'vue-router'
 import Vue2TouchEvents from 'vue2-touch-events'
 
 import LandingPage from './pages/LandingPage.vue'
-// import Home from './pages/Home/Home.vue'
-// import Contact from './pages/Contact.vue'
-import Test1 from './pages/Test1.vue'
-import Test2 from './pages/Test2.vue'
-import Test from './pages/Test.vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCoffee, faCaretLeft, faCaretRight, faPaperPlane, faCaretUp, faCaretDown, faFireExtinguisher, faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faAngleLeft, faAngleRight, faAngleUp, faAngleDown, faCoffee, faCaretLeft, faCaretRight, faPaperPlane, faCaretUp, faCaretDown, faFireExtinguisher, faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faCoffee, faCaretLeft, faCaretRight, faCaretUp, faCaretDown, faPaperPlane, faFireExtinguisher, faBars, faTimes)
+library.add(faAngleLeft, faAngleRight, faAngleUp, faAngleDown, faCoffee, faCaretLeft, faCaretRight, faCaretUp, faCaretDown, faPaperPlane, faFireExtinguisher, faBars, faTimes)
 
 
 const Fragment = {
@@ -54,26 +49,21 @@ const routes = [
     component: () => import(/* webpackPrefetch: true */ './pages/Home/Home.vue')
   },
   {
+    path: '/technology',
+    component: () => import(/* webpackPrefetch: true */ './pages/Technology/Technology.vue')
+  },
+  {
     path: '/contact',
     component: () => import(/* webpackPrefetch: true */ './pages/Contact.vue')
-  },
-  {
-    path: '/test',
-    component: Test
-  },
-  {
-    path: '/test1',
-    component: Test1
-  },
-  {
-    path: '/test2',
-    component: Test2
   }
 ];
 
 const router = new VueRouter({
   routes,
-  mode: 'history'
+  mode: 'history',
+  // scrollBehavior() {
+  //   document.getElementById('app').scrollIntoView();
+  // } 
 });
 
 // new Vue({  router,  store,  render: h => h(App),}).$mount('#app');

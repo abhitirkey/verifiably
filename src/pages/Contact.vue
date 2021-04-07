@@ -2,7 +2,7 @@
     <div class="contactPage__container">
         <div class="contactFormComponent">
             <div class="typewriter">
-                <p class="fadeInHeader">Let's get started. <font-awesome-icon icon="coffee" /></p>
+                <p class="contactHeader fadeInHeader">Let's get started. <font-awesome-icon icon="coffee" /></p>
             </div>
             <div class="formContainer fadeInForm">
 
@@ -384,27 +384,30 @@ input[type=number] {
   border-right: .15em solid transparent; /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .15em; /* Adjust as needed */
   animation: 
     typing 1.5s steps(40, end),
     blink-caret .75s step-end;
   animation-delay: 1s;
   animation-fill-mode: forwards;
-  font-size: 5vw;
-  font-weight: bolder;
+}
+
+.contactHeader {
+    letter-spacing: .15em;
+    font-size: 5vw;
+    font-weight: bolder;
 }
 
 /* The typing effect */
-@keyframes typing {
+/* @keyframes typing {
   from { width: 0; visibility: visible; }
   to { width: 100%; visibility: visible; }
-}
+} */
 
 /* The typewriter cursor effect */
-@keyframes blink-caret {
+/* @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: rgb(34, 34, 34); }
-}
+} */
 
 /* For desktop view only */
 @media only screen and (min-width: 768px){

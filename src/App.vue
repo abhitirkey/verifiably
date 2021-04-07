@@ -6,28 +6,40 @@
       <router-view :key="$route.path" />
     </transition>
   </div> -->
-  <div class="app_container">
+  <div class="app_container" @wheel="ScrollHandler">
     <Header v-if="checkUrl() !== '/'"/>
-    <transition mode="out-in" enter-active-class="animate__animated animate__zoomInDown" leave-active-class="animate__animated animate__zoomOutRight">
+    <ScrollButton type="left" :class="{'visible' : currentSection > 1}" :sectionID="'#section'+(currentSection-1)" @click.native="goToPreviousSection"/>
+    <transition mode="out-in" enter-active-class="animate__animated animate__zoomInDown pageEnter" leave-active-class="animate__animated animate__zoomOutRight pageLeave">
       <router-view :key="$route.path" />
     </transition>
+    <ScrollButton type="right" :class="{'visible' : currentSection < totalSections}" :sectionID="'#section'+(currentSection+1)" @click.native="goToNextSection"/> 
   </div>
 </template>
 
 <script>
 
 import Header from './components/Header.vue'
+import ScrollButton from './components/ScrollButton.vue'
 // import Intro from './components/LandingPage.vue'
 // import Contact from './components/Contact.vue'
 
 export default {
   name: "App",
   components: {
-    Header
+    Header, ScrollButton
   },
   data() {
     return {
-      Journey: false
+      Journey: false,
+      currentSection: 0,
+      totalSections: 0,
+      pagesWithPointers: [{
+        page: '/home',
+        totalSections: 4
+      }],
+      doScroll: false,
+      windowScrolled: false,
+      windowScrollling: true,
     }
   },
   methods: {
@@ -36,7 +48,103 @@ export default {
     },
     checkUrl() {
       return window.location.pathname;
+    },
+    goToPreviousSection() {
+      this.currentSection--;
+      document.getElementById('section'+this.currentSection).scrollIntoView();
+      this.showScrollButtons();
+    },
+    goToNextSection() {
+      this.currentSection++;
+      document.getElementById('section'+this.currentSection).scrollIntoView();
+      this.showScrollButtons();
+    },
+    ScrollHandler(event){
+      event.preventDefault();
+        this.windowScrolling = true;
+        clearTimeout(this.doScroll);
+        this.doScroll = setTimeout(()=> {
+            this.windowScrolled = true;
+
+            if (event.wheelDelta >= 0 && this.currentSection > 1) {
+                this.goToPreviousSection();
+            }
+            else if(this.currentSection < this.totalSections){
+                this.goToNextSection();
+            }
+
+            this.windowScrolling = false;
+        }, 100);
+    },
+    showScrollButtons() {
+      // Show scroll buttons after every time the page is scrolled
+        // console.log("currentSection: "+this.currentSection);
+        let scrollButtons = document.querySelectorAll('.scrollButton');
+        scrollButtons.forEach(button => {
+          button.classList.add('showScrollButton');
+          setTimeout(() => button.classList.remove('showScrollButton'), 1000);
+        });
     }
+  },
+  watch: {
+    '$route': function(/*to, from*/){
+        const currentPage = window.location.pathname;
+        let pointerPageFound = false;
+        this.pagesWithPointers.forEach(pointerPage => {
+          if(pointerPage.page === currentPage){
+            pointerPageFound = true;
+            this.totalSections = pointerPage.totalSections;
+            this.currentSection = 1;
+          }
+        })
+
+        if(!pointerPageFound){
+          this.totalSections = 0;
+          this.currentSection = 0;
+        }
+
+      console.log("currentSection: "+this.currentSection);
+      console.log("totalSections: "+this.totalSections);
+    }
+  },
+  mounted() {
+    let targets = document.querySelectorAll('section');
+
+    if ('IntersectionObserver' in window) {
+        // IntersectionObserver Supported
+        
+        const lazyLoad = target => {
+            
+            let config = {
+                root: null,
+                rootMargin: '0px',
+              };
+        
+            function handleIntersection(entries) {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        console.log("intersection for "+entry.target);
+                        // const img = entry.target;
+                        // const src = img.getAttribute('data-lazy');
+
+                        // img.classList.add('animate__animated');
+                        // img.classList.add('animate__fadeIn');
+                        // img.setAttribute('src', src);
+                        // observer.disconnect;
+                    }
+                });
+            }
+                    
+            const IO = new IntersectionObserver(handleIntersection, config);
+            
+            IO.observe(target)
+        }
+
+        targets.forEach(target => lazyLoad(target));
+        
+      } else {
+        // IntersectionObserver NOT Supported
+      }
   }
 };
 </script>
@@ -98,7 +206,7 @@ export default {
   flex-direction: column;
 }
 
-.slide {
+.section {
    padding: 3rem 0;
 }
 
@@ -130,7 +238,7 @@ export default {
     display: none;
   }
 
-  .slide {
+  .section {
     width: 100vw;
     height: 100vh;
     /* To accomodate for the height of the navbar */
@@ -146,6 +254,8 @@ export default {
   /* Horizontal-izing classes end here */
 }
 
-
+.pageEnter, .pageLeave {
+  animation-duration: 0.5s;
+}
 
 </style>
