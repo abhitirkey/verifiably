@@ -25,6 +25,9 @@ export default {
   name: "Home",
   components: {
     Section1, Section2, Section3, Section4
+  },
+  created() {
+        window.scrollTo(0, 0);
   }
 };
 </script>

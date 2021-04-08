@@ -6,7 +6,8 @@
             <button class="hollowBtn">Request a Demo</button>
         </div>
         <div class="section1__imageContainer">
-            <img src="./open-government.png"/>
+            <!-- <img src="./open-government.png"/> -->
+            <img-lazy :img-src="require('./open-government.png')" alt="Open Government" width="60%" animateClass="bounceInDown"/>
         </div>
     </div>
 </template>

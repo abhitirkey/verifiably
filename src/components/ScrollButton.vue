@@ -37,66 +37,72 @@ export default {
 </script>
 
 <style scoped>
-
     span {
-        opacity: 0;
-        visibility: hidden;
-        position: fixed;
-        height: fit-content;
-        width: fit-content;
-        font-size: 3rem;
-        z-index: 100;
-        animation: fadeInAndOut 2s;
-        transition: 0.5s;
-        padding: 2rem;
+        display: none;
     }
-
-    span > svg {
-        color: gray;
-    }
-
-    @keyframes fadeInAndOut {
-        0%, 50% {
+    @media only screen and (min-width: 768px){
+        span {
+            display:initial;
             opacity: 0;
+            visibility: hidden;
+            position: fixed;
+            height: fit-content;
+            width: fit-content;
+            font-size: 3rem;
+            z-index: 100;
+            animation: fadeInAndOut 2s;
+            transition: 0.5s;
+            padding: 2rem;
         }
-        25%, 75% {
+
+        span > svg {
+            color: gray;
+        }
+
+        @keyframes fadeInAndOut {
+            0%, 50% {
+                opacity: 0;
+            }
+            25%, 75% {
+                opacity: 1;
+            }
+            100% {
+                opacity:0;
+            }
+        }
+
+        .visible {
+            visibility:visible;
+        }
+
+        span:hover {
+            cursor: pointer;
+            opacity: 1;
+            transform: scale(2);
+        }
+
+        .showScrollButton {
             opacity: 1;
         }
-        100% {
-            opacity:0;
+
+        .angleLeft {
+            top: 50vh;
+            left: 5vw;
+        }
+
+        .angleRight {
+            top: 50vh;
+            right: 5vw;
+        }
+
+        .angleTop {
+            top: 1rem;
+            left: 50vw;
+        }
+        .angleBottom {
+            bottom: 1rem;
+            left: 50vw;
         }
     }
-
-    .visible {
-        visibility:visible;
-    }
-
-    span:hover {
-        cursor: pointer;
-        opacity: 1;
-        transform: scale(2);
-    }
-
-    .showScrollButton {
-        opacity: 1;
-    }
-
-    .angleLeft {
-        top: 50vh;
-        left: 5vw;
-    }
-
-    .angleRight {
-        top: 50vh;
-        right: 5vw;
-    }
-
-    .angleTop {
-        top: 1rem;
-        left: 50vw;
-    }
-    .angleBottom {
-        bottom: 1rem;
-        left: 50vw;
-    }
+    
 </style>

@@ -6,6 +6,8 @@ import Vue2TouchEvents from 'vue2-touch-events'
 
 import LandingPage from './pages/LandingPage.vue'
 
+import ImageLazy from './components/ImageLazy.vue'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faAngleLeft, faAngleRight, faAngleUp, faAngleDown, faCoffee, faCaretLeft, faCaretRight, faPaperPlane, faCaretUp, faCaretDown, faFireExtinguisher, faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -20,6 +22,7 @@ const Fragment = {
 
 Vue.component('fragment', Fragment);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
+Vue.component('img-lazy', ImageLazy);
 
 Vue.use(Vue2TouchEvents);
 Vue.use(VueRouter);

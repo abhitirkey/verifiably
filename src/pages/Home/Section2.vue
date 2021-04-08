@@ -8,27 +8,19 @@
             <p>Step 3 is where the trouble starts. Because the data must be replicated for use, a host of problems are introduced.</p>
             </div>
             <div class="col col2">
-                <img src="./ChallengeDiagram.png" alt="ChallengeDiagram" class="ChallengeDiagram"/>
+                <!-- <div class="ChallengeDiagramDIV"> -->
+                    <!-- <div v-if="dataUrl" :style="{ background }" class="ChallengeDiagramPlaceHolder"></div> -->
+                    <!-- <img id="ChallengeDiagramID" src="./ChallengeDiagramPlaceholder.png" class="ChallengeDiagram"/> -->
+                    <img-lazy :img-src="require('./ChallengeDiagram.png')" background="background: transparent;" animateClass="pulse"/>
+                <!-- </div> -->
             </div>
         </div>
         <div class="row row2">
             <div class="col" style="align-items: center; gap: 1rem;">
                 <span class="boldText" style="font-size: 1.2rem;">PROBLEMS ASSOCIATED WITH DECRYPTION</span>
                 <div class="problems__Grid">
-                    <div>
-                        <img src="https://img.icons8.com/ios-filled/100/000000/openvpn.png"/>
-                        <span>Placeholder</span>
-                    </div>             
-                    <div>
-                        <img src="https://img.icons8.com/ios-filled/100/000000/openvpn.png"/>
-                        <span>Placeholder</span>
-                    </div>             
-                    <div>
-                        <img src="https://img.icons8.com/ios-filled/100/000000/openvpn.png"/>
-                        <span>Placeholder</span>
-                    </div>             
-                    <div>
-                        <img src="https://img.icons8.com/ios-filled/100/000000/openvpn.png"/>
+                    <div v-for="n in 4" :key="n">
+                        <img-lazy img-src="https://img.icons8.com/ios-filled/100/000000/openvpn.png" background="background: transparent;" animateClass="fadeInUp"/>    
                         <span>Placeholder</span>
                     </div>             
                 </div>
@@ -40,20 +32,13 @@
 
 <script>
 
-// import ChallengeDiagram from './ChallengeDiagram.png'
-
 export default {
-    name: 'Section2',
-    // components: { ChallengeDiagram },
-    // data: function() {
-    //     return {
-    //         ChallengeDiagram: ChallengeDiagram
-    //     }
-    // }
+    name: 'Section2'
 }
 </script>
 
 <style scoped>
+
 .two > .row1 > .col1, .two > .row1 > .col2 {
       margin: 0 2.5rem;
   }  
@@ -61,11 +46,6 @@ export default {
   .two > .row1 > .col1 > h1,
     .two > .row1 > .col1 > span {
     text-align: center;
-  }
-
-  .ChallengeDiagram {
-    width: 100%;
-    animation: headShake 1s;
   }
 
   .problems__Grid {
