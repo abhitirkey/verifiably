@@ -19,8 +19,12 @@ export default {
         position: relative;
         display: flex;
         transform: scale(0.6);
+        transition: 0.5s;
     }
 
+    .verifiably_logo:hover {
+        transform: scale(0.65);
+    }
     .verifiably_logo > .erifiably {
         position: absolute;
         top: 2.5rem;

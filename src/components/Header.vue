@@ -95,8 +95,8 @@ export default {
         .nav-links-container {
             display: block;
         }
-
-        .nav_links_container > a {
+        
+        .nav_links_container >  a {
             display:initial;
             text-decoration: none;
             margin: 0 2rem;
@@ -105,7 +105,14 @@ export default {
             color: gray;
             mix-blend-mode: difference;
             background: transparent;
-        }   
+        }
+
+        /* .nav_links_container > span:hover
+        
+        .nav_links_container > a:hover{
+            transform: scale(1.5);
+            -webkit-transform: scale(1.5);
+        } */
 
         .nav_links_container > button {
             display: none;

@@ -66,10 +66,15 @@ export default {
         this.doScroll = setTimeout(()=> {
             this.windowScrolled = true;
 
-            if (event.wheelDelta >= 0 && this.currentSection > 1) {
+            console.log("wheelDelta (chrome): ", event.wheelDelta);
+            console.log("delta firefox", event.deltaY);
+
+            // event.wheelDelta detects mouse wheel event direction on Chrome, event.deltaY detects it on Firefox
+
+            if ((event.wheelDelta >= 0 || event.deltaY < 0) && this.currentSection > 1) {
                 this.goToPreviousSection();
             }
-            else if(this.currentSection < this.totalSections){
+            else if((event.wheelDelta < 0 || event.deltaY >= 0) && this.currentSection < this.totalSections){
                 this.goToNextSection();
             }
 
