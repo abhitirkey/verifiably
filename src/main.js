@@ -8,6 +8,8 @@ import LandingPage from './pages/LandingPage.vue'
 
 import ImageLazy from './components/ImageLazy.vue'
 
+import IntersectionObserver from 'intersection-observer'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faAngleLeft, faAngleRight, faAngleUp, faAngleDown, faCoffee, faCaretLeft, faCaretRight, faPaperPlane, faCaretUp, faCaretDown, faFireExtinguisher, faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -20,12 +22,15 @@ const Fragment = {
   render: (h, ctx) => ctx.children
 };
 
+// IntersectionObserver.prototype.POLL_INTERVAL = 100;
+
 Vue.component('fragment', Fragment);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.component('img-lazy', ImageLazy);
 
 Vue.use(Vue2TouchEvents);
 Vue.use(VueRouter);
+Vue.use(IntersectionObserver);
 Vue.config.productionTip = false;
 
 Vue.mixin({

@@ -72,6 +72,7 @@ export default {
 
       }, config);
 
+      observer.POLL_INTERVAL = 100; // Time in milliseconds.
       observer.observe(img)
 
       this.$once('hook:beforeDestroy', () => {
