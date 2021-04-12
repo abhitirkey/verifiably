@@ -10,7 +10,7 @@
     <Header v-if="checkUrl() !== '/'"/>
     <ScrollButton type="left" :class="{'visible' : currentSection > 1}" :sectionID="'#section'+(currentSection-1)" @click.native="goToPreviousSection"/>
     <transition mode="out-in" enter-active-class="animate__animated animate__zoomInDown pageEnter" leave-active-class="animate__animated animate__zoomOut pageLeave">
-      <router-view :key="$route.path" />
+      <router-view v-if="windowActive" :key="$route.path" />
     </transition>
     <ScrollButton type="right" :class="{'visible' : currentSection < totalSections}" :sectionID="'#section'+(currentSection+1)" @click.native="goToNextSection"/> 
   </div>
@@ -40,6 +40,7 @@ export default {
       doScroll: false,
       windowScrolled: false,
       windowScrollling: true,
+      windowActive: false // For loading page contents when only the window/tab is active
     }
   },
   methods: {
@@ -112,44 +113,16 @@ export default {
       console.log("totalSections: "+this.totalSections);
     }
   },
+  beforeCreate(){
+
+  },
   mounted() {
-    let targets = document.querySelectorAll('section');
-
-    if ('IntersectionObserver' in window) {
-        // IntersectionObserver Supported
-        
-        const lazyLoad = target => {
-            
-            let config = {
-                root: null,
-                rootMargin: '0px',
-              };
-        
-            function handleIntersection(entries) {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        console.log("intersection for "+entry.target);
-                        // const img = entry.target;
-                        // const src = img.getAttribute('data-lazy');
-
-                        // img.classList.add('animate__animated');
-                        // img.classList.add('animate__fadeIn');
-                        // img.setAttribute('src', src);
-                        // observer.disconnect;
-                    }
-                });
-            }
-                    
-            const IO = new IntersectionObserver(handleIntersection, config);
-            
-            IO.observe(target)
-        }
-
-        targets.forEach(target => lazyLoad(target));
-        
-      } else {
-        // IntersectionObserver NOT Supported
-      }
+    if(document.hasFocus()){
+      this.windowActive = true;
+    }
+    window.addEventListener('focus', () => {
+      this.windowActive = true;
+    })
   }
 };
 </script>

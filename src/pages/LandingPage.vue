@@ -71,6 +71,7 @@ export default {
   border: none;
   box-shadow: 5px 5px 19px 0px #00000017;
   text-decoration: none;
+  transition: 0.5s;
 }
 
 .IntroContainer > a:focus {
@@ -79,6 +80,10 @@ export default {
 
 .IntroContainer > a:active {
   box-shadow: none;
+}
+
+.IntroContainer > a:hover {
+  transform: scale(1.2);
 }
 
 @keyframes hideThis {
