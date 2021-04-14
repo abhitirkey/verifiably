@@ -1,7 +1,7 @@
 <template>
 <div class="fragment" style="width: fit-content;">
   <img
-    :src="dataUrl"
+    :src="imgSrcLazy? imgSrcLazy : dataUrl"
     :alt="$attrs.alt || ''"
     :style="$attrs.style"
     :width="$attrs.width"
@@ -21,6 +21,10 @@ export default {
     imgSrc: {
         type: String,
         required: true,
+    },
+    imgSrcLazy: {
+      type: String,
+      default: null
     },
     classes: {
         type: String,

@@ -92,13 +92,15 @@
                 <!-- </div> -->
                 <span class="NavigationIconSpan" v-if="step !== 4 && !isMobile()" @click="goForward()"><font-awesome-icon icon="caret-right"/></span>
                 <span class="NavigationIconSpan" v-else @click="goForward()"><font-awesome-icon icon="caret-down"/></span>
-                <span class="NavigationIconSpan" v-if="step === 4"><font-awesome-icon icon="paper-plane"/></span>
+                <span class="NavigationIconSpan" v-if="step === 4" @click="submitContactForm()"><font-awesome-icon icon="paper-plane"/></span>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+
+import axios from 'axios'
 
 export default {
     name: "Contact",
@@ -226,6 +228,26 @@ export default {
         },
         afterEnter: function () {
             this.$refs['contactField'+this.step].focus();
+        },
+        submitContactForm(){
+            if(this.formData.message === ""){
+                this.formData.invalidMsg = '(Message field cannot be left blank)';
+                this.formData.fieldValid = false;
+                this.formData.shakeField = true; // Shake the input field if invalid
+            }
+            else {
+                this.formData.fieldValid = true;
+
+                const formData = this.formData;
+
+                axios.post('https://qqt20956wc.execute-api.us-east-2.amazonaws.com/default/verifiably_contact_email', formData)
+                .then(response => {
+                    alert("sent successfully!");
+                    console.log(response);
+                }, error => {
+                    console.log(error);
+                })
+            }
         }
     }
 }
