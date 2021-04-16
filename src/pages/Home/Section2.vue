@@ -11,11 +11,20 @@
                 <!-- <div class="ChallengeDiagramDIV"> -->
                     <!-- <div v-if="dataUrl" :style="{ background }" class="ChallengeDiagramPlaceHolder"></div> -->
                     <!-- <img id="ChallengeDiagramID" src="./ChallengeDiagramPlaceholder.png" class="ChallengeDiagram"/> -->
-                    <img-lazy :img-src="require('./ChallengeDiagram.png')" background="background: transparent;" animateClass="pulse"/>
+                    <h2 class="SliderLeftQuote"><font-awesome-icon icon="quote-left"/></h2>
+                    <div class="imageSlider">
+                        <transition appear enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
+                         <img-lazy v-if="currentSlide === 1" key="slide1" :img-src="require('./Section2Slide/UI1.jpg')" background="background: transparent;" class="imageSlide"/>
+                         <img-lazy v-if="currentSlide === 2" key="slide2" :img-src="require('./Section2Slide/UI2.jpg')" background="background: transparent;" class="imageSlide"/>
+                         <img-lazy v-if="currentSlide === 3" key="slide3" :img-src="require('./Section2Slide/UI3.jpg')" background="background: transparent;" class="imageSlide"/>
+                        </transition>
+                        <img-lazy key="slide4" :img-src="require('./Section2Slide/UI3.jpg')" background="background: transparent;" class="hiddenSlide"/>
+                    </div>
+                    <h2 class="SliderRightQuote"><font-awesome-icon icon="quote-right"/></h2>
                 <!-- </div> -->
             </div>
         </div>
-        <div class="row row2">
+        <!-- <div class="row row2">
             <div class="col" style="align-items: center; gap: 1rem;">
                 <span class="boldText" style="font-size: 1.2rem;">PROBLEMS ASSOCIATED WITH DECRYPTION</span>
                 <div class="problems__Grid">
@@ -25,7 +34,7 @@
                     </div>             
                 </div>
             </div>
-        </div>
+        </div> -->
               
     </div>
 </template>
@@ -33,7 +42,19 @@
 <script>
 
 export default {
-    name: 'Section2'
+    name: 'Section2',
+    data() {
+        return {
+            currentSlide: 0
+        }
+    },
+    mounted() {
+        setInterval(() => {
+            if(this.currentSlide === 3)
+                this.currentSlide = 1;
+            else this.currentSlide++;
+        }, 2000);
+    }
 }
 </script>
 
@@ -46,6 +67,17 @@ export default {
   .two > .row1 > .col1 > h1,
     .two > .row1 > .col1 > span {
     text-align: center;
+  }
+
+  .two > .row1 > .col2 {
+       margin-top: 1.5rem;
+  }
+
+  .col1 > p {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+      text-align: justify;
+      margin: 0.5rem 0;
   }
 
   .problems__Grid {
@@ -64,21 +96,74 @@ export default {
     margin: 0.7rem 0;
   }
 
+   .imageSlider {
+      margin-top: 2rem;
+      position: relative;
+      text-align: center;
+    }
+
+    .imageSlider  img {
+        max-width: 80%;
+        text-align: center;
+    }
+
+    .imageSlider .imageSlide {
+        position: absolute;
+    }
+
+    .imageSlider .hiddenSlide {
+        opacity: 0;
+    }
+
+    .SliderRightQuote {
+        display:flex;
+        justify-content: flex-end;
+        margin-top: 2rem;
+    }
+
 @media only screen and (min-width: 768px){
+
+    .imageSlider {
+      text-align: center;
+    }
+
+    .imageSlider img {
+        max-width: 75%;
+    }
+
+    .col1 > p {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
+
+    .SliderRightQuote, .SliderLeftQuote {
+        font-size: 2rem;
+    }
+/* 
     .two {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    } */
+
+    .two > .row1 {
+        display: flex;
+        height: 100%;
+    }
+
+    .two > .row1 > .col1 {
+        flex-basis: 40%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
 
-    .two > .row1 > .col1 {
-        flex-basis: 40%;
-    }
-
     .two > .row1 > .col2 {
         flex-basis: 60%;
         order: 2;
+        position: relative;
+        margin-top: 0;
     }
 
     .two > .row1 > .col1 > h1,

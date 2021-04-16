@@ -35,6 +35,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
+  .section {
+    height: 100vh;
+    padding-top: 7rem;
+  }
+
   .one, .three {
     background: linear-gradient(white , rgb(209, 209, 209));
   }
@@ -50,6 +55,11 @@ export default {
   }
 
   @media only screen and (min-width: 768px){
+
+      .section {
+        padding-top: 6rem;
+      }
+
 
         .inner-wrapper {
           /* Because of 4 sections each having with of 100vw */

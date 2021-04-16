@@ -1,5 +1,5 @@
 <template>
-<div class="fragment" style="width: fit-content;">
+<!-- <div class="fragment" style="width: fit-content;"> -->
   <img
     :src="imgSrcLazy? imgSrcLazy : dataUrl"
     :alt="$attrs.alt || ''"
@@ -9,7 +9,7 @@
     v-bind="$attrs"
     class="AppImage"
   >
-</div>
+<!-- </div> -->
 </template>
 
 <script>
@@ -58,7 +58,7 @@ export default {
           threshold: 0.9
       }
 
-       const img = $el.querySelector('img')
+       const img = $el;
 
       const observer = new IntersectionObserver(([entry]) => {
             
@@ -89,7 +89,6 @@ export default {
 <style>
 .AppImage {
   max-width: 100%;
-  max-height: 100%;
   vertical-align: middle;
 }
 </style>

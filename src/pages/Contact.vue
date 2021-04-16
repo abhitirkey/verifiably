@@ -7,11 +7,11 @@
             <div v-if="step !== 5 && step > 0" class="formContainer fadeInForm" key="contactForm">
                     <!-- Conditional rendering for desktop or mobile -->
                     <div v-if="!isMobile()">
-                        <span class="NavigationIconSpan" v-if="step > 1 && step < 5" @click="goBack()"><font-awesome-icon icon="caret-left"/></span>
+                        <span class="NavigationIconSpan" v-if="step > 1" @click="goBack()"><font-awesome-icon icon="caret-left"/></span>
                         <!-- <span class="NavigationIconSpan grayed" v-else-if="step === 1"><font-awesome-icon icon="caret-left" style="color: rgb(165, 165, 165);"/></span> -->
                     </div>
                     <div v-else>
-                        <span class="NavigationIconSpan" v-if="step > 1 && step < 5" @click="goBack()"><font-awesome-icon icon="caret-up"/></span>
+                        <span class="NavigationIconSpan" v-if="step > 1" @click="goBack()"><font-awesome-icon icon="caret-up"/></span>
                         <!-- <span class="NavigationIconSpan grayed" v-else-if="step === 1"><font-awesome-icon icon="caret-up" style="color: rgb(165, 165, 165);"/></span> -->
                     </div>
                     
@@ -92,7 +92,7 @@
                     <span class="NavigationIconSpan" v-else-if="step < 4" @click="goForward()"><font-awesome-icon icon="caret-down"/></span>
                     <span class="NavigationIconSpan" v-if="step === 4" @click="submitContactForm()"><font-awesome-icon icon="paper-plane"/></span>
             </div>
-            <transition appear enter-active-class="animate__animated animate__zoomIn" leave-active-class="animate__animated animate__zoomOut">
+            <transition :duration="600" appear enter-active-class="animate__animated animate__zoomIn" leave-active-class="animate__animated animate__zoomOut">
                 <div v-if="step === 5" class="messageStatus" key="sendStatus">
                     <transition :duration="600" mode="out-in" enter-active-class="animate__animated animate__zoomIn" leave-active-class="animate__animated animate__zoomOut">
                         <div v-if="!formSent" key="sending">
@@ -129,13 +129,13 @@ export default {
             step: 0,
             formSent: false,
             enterClasses: 'animate__animated animate__backInRight delay',
-            leaveClasses: 'animate__animated animate__backOutLeft'
+            leaveClasses: 'animate__animated animate__backOutLeft',
+            email_regX: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         }
     },
     methods: {
         fieldChangeHandler: function(e) {
            e.preventDefault();
-           alert(e.keyCode);
            switch(this.step){
                 case 1:
                     if(this.formData.name === ''){
@@ -148,7 +148,11 @@ export default {
                     break;
                 case 2:
                     if(this.formData.email === ''){
-                        this.formData.invalidMsg = '(This is not a valid email address)';
+                        this.formData.invalidMsg = '(This is a required field)';
+                        this.formData.fieldValid = false;
+                    }
+                    else if(this.email_regX.test(this.formData.email)){
+                        this.formData.invalidMsg = '(Please enter a valid email address)';
                         this.formData.fieldValid = false;
                     }
                     else{
@@ -184,7 +188,9 @@ export default {
         },
         goForward() {
 
+            // let email_regX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             let valid = true;
+
             switch(this.step){
                 case 1:
                     if(this.formData.name === ''){
@@ -199,10 +205,15 @@ export default {
                     break;
                 case 2:
                     if(this.formData.email === ''){
-                        this.formData.invalidMsg = '(This is not a valid email address)';
+                        this.formData.invalidMsg = '(This is a required field)';
                         this.formData.fieldValid = false;
                         this.formData.shakeField = true;
                         valid = false;
+                    }
+                    else if(this.email_regX.test(this.formData.email)){
+                        this.formData.invalidMsg = '(Please enter a valid email address)';
+                        this.formData.fieldValid = false;
+                        this.formData.shakeField = true;
                     }
                     else{
                         this.formData.fieldValid = true;
@@ -276,7 +287,7 @@ export default {
         }
     },
     mounted() {
-        setTimeout(() => this.step += 1, 2500);
+        setTimeout(() => this.step += 1, 1500);
     }
 }
 </script>
@@ -389,6 +400,7 @@ export default {
 
 .fadeInForm {
     animation: fadeIn 1s;
+    animation-delay: 0.7s;
     animation-fill-mode: forwards;
 }
 

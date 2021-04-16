@@ -41,12 +41,12 @@ export default {
   }
 
   .section1__textContainer > h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
   }
 
   .section1__textContainer > span {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     font-family:Arial, Helvetica, sans-serif;
     text-align: justify;
   }
