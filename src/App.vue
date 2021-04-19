@@ -10,14 +10,14 @@
     <Header v-if="checkUrl() !== '/'"/>
     <ScrollButton type="left" :class="{'visible' : currentSection > 1}" :sectionID="'#section'+(currentSection-1)" @click.native="goToPreviousSection"/>
     <transition mode="out-in" enter-active-class="animate__animated animate__zoomInDown pageEnter" leave-active-class="animate__animated animate__zoomOut pageLeave">
-      <router-view v-if="windowActive" :key="$route.path" />
+      <router-view v-if="windowActive" :key="$route.path" @scrollToNext="goToNextSection"/>
     </transition>
     <ScrollButton type="right" :class="{'visible' : currentSection < totalSections}" :sectionID="'#section'+(currentSection+1)" @click.native="goToNextSection"/> 
   </div>
 </template>
 
 <script>
-
+import EventBus from '@/event-bus' // To listen to events triggered from sub components
 import Header from './components/Header.vue'
 import ScrollButton from './components/ScrollButton.vue'
 // import Intro from './components/LandingPage.vue'
@@ -123,6 +123,12 @@ export default {
     window.addEventListener('focus', () => {
       this.windowActive = true;
     })
+
+    EventBus.$on('scrollToNext', () => {
+        // handle event triggered from subcomponent
+        this.goToNextSection();
+      })
+    
   }
 };
 </script>

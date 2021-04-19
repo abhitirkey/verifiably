@@ -1,9 +1,10 @@
 <template>
   <div class="section one">
         <div class="section1__textContainer">
-            <h1>Unlock Private Data Sharing.</h1>
-            <span>Enterprise Data Privacy as a service, TripleBlind is the HTTPS of private data sharing. Unlock new revenue opportunities while automatically enforcing compliance with GDPR, HIPAA and other privacy regulations.</span>
-            <button class="hollowBtn">Request a Demo</button>
+            <h1>Establish trust, <br/>build verifiably.</h1>
+            <span>Verifiably ensures data privacy and algorithm fairness through verifiable transparency of code and data access as a service.</span>
+            <span>Establish customer trust while also having gap free audit trails for internal security.</span>
+            <button class="hollowBtn" @click="scrollToNext">Learn More</button>
         </div>
         <div class="section1__imageContainer">
             <!-- <img src="./open-government.png"/> -->
@@ -13,8 +14,15 @@
 </template>
 
 <script>
+import EventBus from '@/event-bus'
+
 export default {
-    name: 'Section1'
+    name: 'Section1',
+    methods: {
+      scrollToNext(){
+        EventBus.$emit('scrollToNext')
+      }
+    }
 }
 </script>
 
@@ -34,10 +42,6 @@ export default {
     flex-direction: column;
     padding: 1rem 4rem;
     align-items: center;
-  }
-
-  .section1__textContainer > * {
-    margin: 0.7rem 0;
   }
 
   .section1__textContainer > h1 {
@@ -82,10 +86,6 @@ export default {
           justify-content: space-between;
           align-items: flex-start;
           padding: 5rem;
-        }
-
-        .section1__textContainer > * {
-          margin: 0.7rem 0;
         }
 
         .section1__textContainer > h1 {
