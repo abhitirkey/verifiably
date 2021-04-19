@@ -1,8 +1,8 @@
 <template>
     <div class="contactPage__container">
         <div class="contactFormComponent">
-            <div class="typewriter">
-                <p class="contactHeader fadeInHeader">Let's get started. <font-awesome-icon icon="coffee" /></p>
+            <div class="animate__animated animate__bounceInLeft">
+                <p class="contactHeader">Let's get started. <font-awesome-icon icon="coffee" /></p>
             </div>
             <div v-if="step !== 4 && step > 0" class="formContainer fadeInForm" key="contactForm">
                     <!-- Conditional rendering for desktop or mobile -->
@@ -16,7 +16,7 @@
                     </div>
                     
                     <!-- <div class="form"> -->
-                        <transition appear v-on:after-enter="afterEnter" v-bind:enter-active-class="enterClasses" v-bind:leave-active-class="leaveClasses">
+                        <transition appear v-on:after-enter="afterEnter" :duration="{ enter: 250, leave: 250 }" v-bind:enter-active-class="enterClasses" v-bind:leave-active-class="leaveClasses">
                             <div v-if="step === 1" class="input__group" key="step1">
                                 <label for="contactField1">Your Name</label>
                                 <input 
@@ -74,15 +74,15 @@
                     <span class="NavigationIconSpan" v-else-if="step < 3" @click="goForward()"><font-awesome-icon icon="caret-down"/></span>
                     <span class="NavigationIconSpan" v-if="step === 3" @click="submitContactForm()"><font-awesome-icon icon="paper-plane"/></span>
             </div>
-            <transition :duration="600" appear enter-active-class="animate__animated animate__zoomIn" leave-active-class="animate__animated animate__zoomOut">
+            <transition :duration="400" appear enter-active-class="animate__animated animate__zoomIn" leave-active-class="animate__animated animate__zoomOut">
                 <div v-if="step === 4" class="messageStatus" key="sendStatus">
-                    <transition :duration="600" mode="out-in" enter-active-class="animate__animated animate__zoomIn" leave-active-class="animate__animated animate__zoomOut">
+                    <transition :duration="400" mode="out-in" enter-active-class="animate__animated animate__zoomIn" leave-active-class="animate__animated animate__zoomOut">
                         <div v-if="!formSent" key="sending">
                             <h2 class="regularWeightText sendingForm TextCenter"> Please wait, sending form... </h2>
                         </div>
                         <div v-else key="sent">
                             <h2 class="regularWeightText TextCenter"> Form successfully sent! :) </h2>
-                            <h3 @click="resetForm()" class="animate__animated animate__lightSpeedInLeft animate__delay-1s reset_form TextCenter">Reset Form <font-awesome-icon icon="undo"/></h3>
+                            <h3 @click="resetForm()" class="animate__animated animate__lightSpeedInLeft delay reset_form TextCenter">Reset Form <font-awesome-icon icon="undo"/></h3>
                         </div>
                     </transition>
                 </div>
@@ -107,10 +107,10 @@ export default {
                 shakeField: false,
                 invalidMsg: ''
             },
-            step: 0,
+            step: 1,
             formSent: false,
-            enterClasses: 'animate__animated animate__backInRight',
-            leaveClasses: 'animate__animated animate__backOutLeft'
+            enterClasses: 'animate__animated animate__fadeIn',
+            leaveClasses: 'animate__animated animate__fadeOut'
         }
     },
     methods: {
@@ -145,8 +145,8 @@ export default {
         goBack() {
             if(!this.formData.fieldValid)
                 this.formData.fieldValid = true;
-            this.enterClasses = this.isMobile() ? 'animate__animated animate__fadeInDownBig' : 'animate__animated animate__backInRight delay';
-            this.leaveClasses = this.isMobile() ? 'animate__animated animate__fadeOutDownBig' : 'animate__animated animate__backOutLeft';
+            this.enterClasses = this.isMobile() ? 'animate__animated animate__fadeIn' : 'animate__animated animate__fadeIn delay';
+            this.leaveClasses = 'animate__animated animate__fadeOut';
             this.step -= 1;
         },
         goForward() {
@@ -186,8 +186,8 @@ export default {
             }
 
             if(valid){
-                this.enterClasses = this.isMobile() ? 'animate__animated animate__fadeInUpBig' : 'animate__animated animate__backInRight delay';
-                this.leaveClasses = this.isMobile() ? 'animate__animated animate__fadeOutUpBig' : 'animate__animated animate__backOutLeft';
+                this.enterClasses = this.isMobile() ? 'animate__animated animate__fadeIn' : 'animate__animated animate__fadeIn delay';
+                this.leaveClasses = 'animate__animated animate__fadeOut';
                 this.step += 1;
             }
         },
@@ -228,7 +228,7 @@ export default {
         }
     },
     mounted() {
-        setTimeout(() => this.step += 1, 1500);
+        // setTimeout(() => this.step += 1, 100);
     }
 }
 </script>
@@ -335,7 +335,6 @@ export default {
 
 .fadeInHeader {
     animation: fadeIn 1s;
-    animation-delay: 1s;
     animation-fill-mode: forwards;
 }
 
@@ -382,22 +381,9 @@ input[type=number] {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.103); 
 }
 
-.typewriter p{
-  visibility: hidden;
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid transparent; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  animation: 
-    typing 1s steps(40, end),
-    blink-caret .75s step-end;
-  animation-delay: 0.5s;
-  animation-fill-mode: forwards;
-}
-
 .contactHeader {
     letter-spacing: .15em;
-    font-size: 5vw;
+    font-size: 2vw;
     font-weight: bolder;
 }
 

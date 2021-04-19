@@ -32,16 +32,17 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
     padding-top: 6rem;
   }
 
   .section1__textContainer {
     order: 2;
     display: flex;
+    justify-content: center;
     flex-direction: column;
     padding: 1rem 4rem;
     align-items: center;
+    height: 100%;
   }
 
   .section1__textContainer > h1 {

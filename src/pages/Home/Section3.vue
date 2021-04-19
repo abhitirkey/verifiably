@@ -1,9 +1,9 @@
 <template>
 <div class="section three">
     <div class="col" style="align-items: center; width: 50%;">
-        <img-lazy :img-src="require('./section_3_open_internet.png')" alt="" animateClass="bounceInDown"/>
-        <h1>Verifiably is the first transparency service for web apps that are built on popular cloud providers.</h1>
-        <p>It allows visibility into algorithms and data access for end users, verifiable by anyone, trusted by everyone.</p>
+        <img-lazy :img-src="require('./section_3_open_internet.png')" alt="" animateClass="fadeIn"/>
+        <h1>Verifiably is the first transparency service for Web Apps.</h1>
+        <p>We enable visibility into your app's algorithms and data access for end users, verifiable by anyone, trusted by everyone. All while building on popular cloud providers.</p>
         <p>Building verifiably means a gap-free audit trail and security first implementation that also minimizes the risk of internal and external security breaches.</p>
         <router-link to="/contact">Begin the Journey</router-link>
     </div>
@@ -64,7 +64,7 @@ export default {
 
 @media only screen and (min-width: 768px){
     .three > .col > img {
-        width: 70%;
+        width: 60%;
     }
 }
 </style>
