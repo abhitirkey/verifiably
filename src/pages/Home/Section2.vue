@@ -11,13 +11,13 @@
                 <!-- <div class="ChallengeDiagramDIV"> -->
                     <!-- <div v-if="dataUrl" :style="{ background }" class="ChallengeDiagramPlaceHolder"></div> -->
                     <!-- <img id="ChallengeDiagramID" src="./ChallengeDiagramPlaceholder.png" class="ChallengeDiagram"/> -->
-                    <h2 class="SliderLeftQuote"><font-awesome-icon icon="quote-left"/></h2>
                     <div class="imageSlider">
                         <transition appear enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
                             <LinkPreview 
                                 v-show="currentSlide === 1" 
                                 key="slide1" 
-                                title="Twitter CEO Jack Dorsey: ‘We can do more to provide algorithmic transparency’"
+                                title="We can do more to provide algorithmic transparency"
+                                author="Twitter CEO Jack Dorsey"
                                 :imageUrl="require('./Section2Slide/TwitterCEO.jpg')" 
                                 linkUrl="https://finance.yahoo.com/news/twitter-ceo-jack-dorsey-we-can-do-more-to-provide-algorithmic-transparency-190416046.html"
                                 />   
@@ -26,13 +26,13 @@
                             <LinkPreview 
                                 v-show="currentSlide === 2" 
                                 key="slide2" 
-                                title="Building customer-first relationships in a privacy-first world is critical"
+                                title='Building customer-first relationships in a privacy-first world is critical'
+                                author="TechCrunch"
                                 :imageUrl="require('./Section2Slide/slide2.jpg')" 
                                 linkUrl="https://techcrunch.com/2021/04/14/building-customer-first-relationships-in-a-privacy-first-world-is-critical/?guccounter=1"
                                 />   
                         </transition>
                     </div>
-                    <h2 class="SliderRightQuote"><font-awesome-icon icon="quote-right" style="color:red"/></h2>
                 </div>
             </div>
             
@@ -146,7 +146,7 @@ export default {
       margin-top: 2rem;
       position: relative;
       text-align: center;
-      height: 100vh;
+      height: 22rem;
     }
 
     .imageSlider .hiddenSlide {
@@ -158,14 +158,13 @@ export default {
         justify-content: flex-end;
         margin-top: 2rem;
         width: 100%;
-        position: absolute;
-        bottom: 10%;
     }
 
 @media only screen and (min-width: 768px){
 
     .imageSlider {
       text-align: center;
+      height: inherit;
     }
 
     .col1 > p {
@@ -206,6 +205,11 @@ export default {
     .two > .row1 > .col1 > h1,
     .two > .row1 > .col1 > span {
         text-align: left;
+    }
+
+    .SliderRightQuote {
+        position: absolute;
+        bottom: 10%;
     }
 
     .problems__Grid {

@@ -3,7 +3,8 @@
         <template slot-scope="props"> -->
             <div class="linkPreviewCard">
                 <img class="card-img-top" :src="imageUrl" :alt="title" />
-                <h2 class="card-title">{{title}}</h2>
+                <span class="article-title"><strong>“</strong>{{title}}<strong>”</strong></span>
+                <span class="article-author">{{author}}</span>
                 <a v-bind:href="linkUrl" target="_blank">More</a>
             </div>
     <!-- </template>
@@ -29,6 +30,10 @@ export default {
         title: {
             type: String,
             required: true
+        },
+        author: {
+            type: String,
+            required: true
         }
     }
 }
@@ -44,10 +49,22 @@ export default {
         position: absolute;
     }
 
-    .linkPreviewCard > h2 {
+    .linkPreviewCard > .article-title {
+        font-style: italic;
+        width: 90%;
+        font-size: 1.7rem;
+    }
+
+    .article-title > strong {
+        font-size: 2.2rem;
+    }
+
+    .linkPreviewCard > .article-author {
         font-style: italic;
         width: 90%;
         margin: 1rem 0;
+        font-weight: bolder;
+        font-size: 1.5rem;
     }
 
     .linkPreviewCard > img {
