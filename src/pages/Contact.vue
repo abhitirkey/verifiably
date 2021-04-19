@@ -109,7 +109,7 @@ export default {
             },
             step: 0,
             formSent: false,
-            enterClasses: 'animate__animated animate__backInRight delay',
+            enterClasses: 'animate__animated animate__backInRight',
             leaveClasses: 'animate__animated animate__backOutLeft'
         }
     },
@@ -341,7 +341,6 @@ export default {
 
 .fadeInForm {
     animation: fadeIn 1s;
-    animation-delay: 0.7s;
     animation-fill-mode: forwards;
 }
 
@@ -392,7 +391,7 @@ input[type=number] {
   animation: 
     typing 1s steps(40, end),
     blink-caret .75s step-end;
-  animation-delay: 1s;
+  animation-delay: 0.5s;
   animation-fill-mode: forwards;
 }
 
