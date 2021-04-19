@@ -4,7 +4,6 @@
           <Section1 id="section1" ref="section1"/>
           <Section2 id="section2" ref="section2"/>
           <Section3 id="section3" ref="section3"/>
-          <Section4 id="section4" ref="section4"/>
         </div>
     </div>
 </template>
@@ -14,17 +13,11 @@
 import Section1 from './Section1'
 import Section2 from './Section2'
 import Section3 from './Section3'
-import Section4 from './Section4'
-
-// const Section1 = () => import(/* webpackChunkName: 'Section1' */ "./Section1.vue");
-// const Section2 = () => import(/* webpackChunkName: 'Section2' */ "./Section2.vue");
-// const Section3 = () => import(/* webpackChunkName: 'Section3' */ "./Section3.vue");
-// const Section4 = () => import(/* webpackChunkName: 'Section4' */ "./Section4.vue");
 
 export default {
   name: "Home",
   components: {
-    Section1, Section2, Section3, Section4
+    Section1, Section2, Section3
   },
   created() {
         window.scrollTo(0, 0);

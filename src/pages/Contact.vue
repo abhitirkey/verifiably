@@ -4,7 +4,7 @@
             <div class="typewriter">
                 <p class="contactHeader fadeInHeader">Let's get started. <font-awesome-icon icon="coffee" /></p>
             </div>
-            <div v-if="step !== 5 && step > 0" class="formContainer fadeInForm" key="contactForm">
+            <div v-if="step !== 4 && step > 0" class="formContainer fadeInForm" key="contactForm">
                     <!-- Conditional rendering for desktop or mobile -->
                     <div v-if="!isMobile()">
                         <span class="NavigationIconSpan" v-if="step > 1" @click="goBack()"><font-awesome-icon icon="caret-left"/></span>
@@ -53,28 +53,10 @@
                                 />
                                 <span v-if="!formData.fieldValid" class="invalidFieldMsg">{{formData.invalidMsg}}</span>
                             </div>
-                            <div v-if="step === 3" class="input__group" key="step3">
-                                <label for="contactField3">Your Contact Number</label>
-                                <input 
-                                    ref="contactField3" 
-                                    class="textField" 
-                                    :class="{'shakeField' : formData.shakeField}"
-                                    @animationend="formData.shakeField = false"  
-                                    type="number" 
-                                    v-model="formData.phone" 
-                                    name="phone" 
-                                    placeholder="Type your number here" 
-                                    v-on:input="fieldChangeHandler()"
-                                    v-on:keyup.enter="goForward()"
-                                    v-on:keyup.down="goForward()"
-                                    v-on:keyup.up="goBack()"
-                                />
-                                <span v-if="!formData.fieldValid" class="invalidFieldMsg">{{formData.invalidMsg}}</span>
-                            </div>
-                            <div v-if="step === 4" class="input__group" key="step4">
-                                <label for="contactField4">Your Message</label>
+                            <div v-if="step === 3" class="input__group" key="step4">
+                                <label for="contactField3">Your Message (optional)</label>
                                 <textarea 
-                                    ref="contactField4" 
+                                    ref="contactField3" 
                                     class="messageField" 
                                     :class="{'shakeField' : formData.shakeField}"
                                     @animationend="formData.shakeField = false"  
@@ -88,12 +70,12 @@
                             </div>
                         </transition>
                     <!-- </div> -->
-                    <span class="NavigationIconSpan" v-if="step < 4 && !isMobile()" @click="goForward()"><font-awesome-icon icon="caret-right"/></span>
-                    <span class="NavigationIconSpan" v-else-if="step < 4" @click="goForward()"><font-awesome-icon icon="caret-down"/></span>
-                    <span class="NavigationIconSpan" v-if="step === 4" @click="submitContactForm()"><font-awesome-icon icon="paper-plane"/></span>
+                    <span class="NavigationIconSpan" v-if="step < 3 && !isMobile()" @click="goForward()"><font-awesome-icon icon="caret-right"/></span>
+                    <span class="NavigationIconSpan" v-else-if="step < 3" @click="goForward()"><font-awesome-icon icon="caret-down"/></span>
+                    <span class="NavigationIconSpan" v-if="step === 3" @click="submitContactForm()"><font-awesome-icon icon="paper-plane"/></span>
             </div>
             <transition :duration="600" appear enter-active-class="animate__animated animate__zoomIn" leave-active-class="animate__animated animate__zoomOut">
-                <div v-if="step === 5" class="messageStatus" key="sendStatus">
+                <div v-if="step === 4" class="messageStatus" key="sendStatus">
                     <transition :duration="600" mode="out-in" enter-active-class="animate__animated animate__zoomIn" leave-active-class="animate__animated animate__zoomOut">
                         <div v-if="!formSent" key="sending">
                             <h2 class="regularWeightText sendingForm TextCenter"> Please wait, sending form... </h2>
@@ -121,7 +103,6 @@ export default {
                 name: '',
                 email: '',
                 message: '',
-                phone: '',
                 fieldValid: true,
                 shakeField: false,
                 invalidMsg: ''
@@ -129,13 +110,13 @@ export default {
             step: 0,
             formSent: false,
             enterClasses: 'animate__animated animate__backInRight delay',
-            leaveClasses: 'animate__animated animate__backOutLeft',
-            email_regX: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            leaveClasses: 'animate__animated animate__backOutLeft'
         }
     },
     methods: {
         fieldChangeHandler: function(e) {
            e.preventDefault();
+           let email_regx = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
            switch(this.step){
                 case 1:
                     if(this.formData.name === ''){
@@ -151,26 +132,8 @@ export default {
                         this.formData.invalidMsg = '(This is a required field)';
                         this.formData.fieldValid = false;
                     }
-                    else if(this.email_regX.test(this.formData.email)){
+                    else if(!this.formData.email.match(email_regx)){
                         this.formData.invalidMsg = '(Please enter a valid email address)';
-                        this.formData.fieldValid = false;
-                    }
-                    else{
-                        this.formData.fieldValid = true;
-                    }
-                    break;
-                case 3:
-                    if(this.formData.message === ''){
-                        this.formData.invalidMsg = '(This is not a valid phone number)';
-                        this.formData.fieldValid = false;
-                    }
-                    else{
-                        this.formData.fieldValid = true;
-                    }
-                    break;
-                case 4:
-                    if(this.formData.message === ''){
-                        this.formData.invalidMsg = '(This field cannot be left blank)';
                         this.formData.fieldValid = false;
                     }
                     else{
@@ -188,7 +151,7 @@ export default {
         },
         goForward() {
 
-            // let email_regX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            let email_regx = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
             let valid = true;
 
             switch(this.step){
@@ -210,29 +173,8 @@ export default {
                         this.formData.shakeField = true;
                         valid = false;
                     }
-                    else if(this.email_regX.test(this.formData.email)){
+                    else if(!this.formData.email.match(email_regx)){
                         this.formData.invalidMsg = '(Please enter a valid email address)';
-                        this.formData.fieldValid = false;
-                        this.formData.shakeField = true;
-                    }
-                    else{
-                        this.formData.fieldValid = true;
-                    }
-                    break;
-                case 3:
-                    if(this.formData.phone === ''){
-                        this.formData.invalidMsg = '(This is not a valid phone number)';
-                        this.formData.fieldValid = false;
-                        this.formData.shakeField = true;
-                        valid = false;
-                    }
-                    else{
-                        this.formData.fieldValid = true;
-                    }
-                    break;
-                case 4:
-                    if(this.formData.message === ''){
-                        this.formData.invalidMsg = '(This field cannot be left blank)';
                         this.formData.fieldValid = false;
                         this.formData.shakeField = true;
                         valid = false;
@@ -253,7 +195,7 @@ export default {
             this.$refs['contactField'+this.step].focus();
         },
         submitContactForm(){
-            this.step = 5;
+            this.step = 4;
             if(this.formData.message === ""){
                 this.formData.invalidMsg = '(Message field cannot be left blank)';
                 this.formData.fieldValid = false;
@@ -280,7 +222,6 @@ export default {
             this.formData.name = '';
             this.formData.email = '';
             this.formData.message = '';
-            this.formData.phone = '';
             this.formData.fieldValid = true;
             this.formData.shakeField = false;
             this.formData.invalidMsg = '';
@@ -449,7 +390,7 @@ input[type=number] {
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   animation: 
-    typing 1.5s steps(40, end),
+    typing 1s steps(40, end),
     blink-caret .75s step-end;
   animation-delay: 1s;
   animation-fill-mode: forwards;

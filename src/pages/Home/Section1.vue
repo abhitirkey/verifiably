@@ -47,15 +47,18 @@ export default {
   .section1__textContainer > h1 {
     font-size: 1.5rem;
     text-align: center;
+    margin-bottom: 1rem;
   }
 
   .section1__textContainer > span {
     font-size: 0.9rem;
     font-family:Arial, Helvetica, sans-serif;
     text-align: justify;
+    margin-bottom: 0.5rem;
   }
 
   .section1__textContainer > button {
+    margin-top: 1rem;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
 

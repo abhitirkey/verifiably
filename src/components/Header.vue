@@ -1,25 +1,25 @@
 <template>
     <transition appear enter-active-class="animate__animated animate__backInDown">
     <nav>
-        <router-link to="/home"><VerifiablyLogo/></router-link>
+        <router-link to="/"><VerifiablyLogo/></router-link>
         <div class="nav_links_container">
-            <router-link to="/technology">Technology</router-link> 
+            <!-- <router-link to="/technology">Technology</router-link> 
             <router-link to="/solutions">Solutions</router-link>
-            <router-link to="/about">About</router-link>
+            <router-link to="/about">About</router-link> -->
             <router-link to="/contact">Contact</router-link>
-            <router-link to="/news">News</router-link>
-            <router-link to="/blog">Blog</router-link>
+            <!-- <router-link to="/news">News</router-link>
+            <router-link to="/blog">Blog</router-link> -->
             <button class="unstyledButton" @click="showMobileMenu = true"><h1><font-awesome-icon icon="bars"/></h1></button>
         </div>
         <transition appear enter-active-class="animate__animated animate__fadeInDownBig" leave-active-class="animate__animated animate__fadeOutUpBig">
             <div ref="MobileMenu" class="MobileMenu" v-if="showMobileMenu">
                 <span class="MenuClose" @click="showMobileMenu = false"><font-awesome-icon icon="times"/></span>
-                <router-link to="/technology" class="MobileNavLink"><span @click="showMobileMenu = false">Technology</span></router-link> 
+                <!-- <router-link to="/technology" class="MobileNavLink"><span @click="showMobileMenu = false">Technology</span></router-link> 
                 <router-link to="/solutions" class="MobileNavLink"><span @click="showMobileMenu = false">Solutions</span></router-link>
-                <router-link to="/about"><span @click="showMobileMenu = false">About</span></router-link>
+                <router-link to="/about"><span @click="showMobileMenu = false">About</span></router-link> -->
                 <router-link to="/contact"><span @click="showMobileMenu = false">Contact</span></router-link>
-                <router-link to="/news"><span @click="showMobileMenu = false">News</span></router-link>
-                <router-link to="/blog"><span @click="showMobileMenu = false">Blog</span></router-link>
+                <!-- <router-link to="/news"><span @click="showMobileMenu = false">News</span></router-link>
+                <router-link to="/blog"><span @click="showMobileMenu = false">Blog</span></router-link> -->
             </div>
         </transition>
     </nav>

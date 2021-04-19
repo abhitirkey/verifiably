@@ -4,17 +4,17 @@ import App from "./App.vue";
 import VueRouter from 'vue-router'
 import Vue2TouchEvents from 'vue2-touch-events'
 
-import LandingPage from './pages/LandingPage.vue'
+// import LandingPage from './pages/LandingPage.vue'
 
 import ImageLazy from './components/ImageLazy.vue'
 
 import IntersectionObserver from 'intersection-observer'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faQuoteLeft, faQuoteRight, faUndo, faAngleLeft, faAngleRight, faAngleUp, faAngleDown, faCoffee, faCaretLeft, faCaretRight, faPaperPlane, faCaretUp, faCaretDown, faFireExtinguisher, faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faPhone, faQuoteLeft, faQuoteRight, faUndo, faAngleLeft, faAngleRight, faAngleUp, faAngleDown, faCoffee, faCaretLeft, faCaretRight, faPaperPlane, faCaretUp, faCaretDown, faFireExtinguisher, faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faQuoteLeft, faQuoteRight, faUndo, faAngleLeft, faAngleRight, faAngleUp, faAngleDown, faCoffee, faCaretLeft, faCaretRight, faCaretUp, faCaretDown, faPaperPlane, faFireExtinguisher, faBars, faTimes)
+library.add(faPhone, faQuoteLeft, faQuoteRight, faUndo, faAngleLeft, faAngleRight, faAngleUp, faAngleDown, faCoffee, faCaretLeft, faCaretRight, faCaretUp, faCaretDown, faPaperPlane, faFireExtinguisher, faBars, faTimes)
 
 
 const Fragment = {
@@ -50,16 +50,16 @@ Vue.mixin({
 const routes = [
   {
     path: '/',
-    component: LandingPage
+    component: () => import(/* webpackPrefetch: true */ './pages/Home/Home.vue')
   },
   {
     path: '/home',
     component: () => import(/* webpackPrefetch: true */ './pages/Home/Home.vue')
   },
-  {
-    path: '/technology',
-    component: () => import(/* webpackPrefetch: true */ './pages/Technology/Technology.vue')
-  },
+  // {
+  //   path: '/technology',
+  //   component: () => import(/* webpackPrefetch: true */ './pages/Technology/Technology.vue')
+  // },
   {
     path: '/contact',
     component: () => import(/* webpackPrefetch: true */ './pages/Contact.vue')

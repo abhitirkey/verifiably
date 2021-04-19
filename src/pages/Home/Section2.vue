@@ -2,10 +2,15 @@
     <div class="section two">
         <div class="row row1">
             <div class="col col1" data-animation="fadeInDown">
-            <span class="boldText" style="font-size: 1.2rem;">THE CHALLENGE</span>
-            <h1>How Data Ecosystems are broken today</h1>
-            <p>Vast amounts of data stored by enterprises are inaccessible and un-monetized due to privacy concerns, operational complexity and regulations.</p>
-            <p>Step 3 is where the trouble starts. Because the data must be replicated for use, a host of problems are introduced.</p>
+                <span class="boldText" style="font-size: 1.2rem;">THE CHALLENGE</span>
+                <h1>How the trust model is broken today</h1>
+                <p>Highly-publicized instances of user data misuse & breaches
+    have (rightly) eroded consumer trust fueling increasing regulatory and user demand for transparency & accountability
+    from businesses.</p>
+                <p>But small businesses
+    & startups often lack the
+    technical expertise & toolsets to address this
+    ever-growing data protection imperative.</p>`
             </div>
             <div class="col col2" data-animation="fadeInUp">
                 <!-- <div class="ChallengeDiagramDIV"> -->
@@ -143,7 +148,7 @@ export default {
   }
 
    .imageSlider {
-      margin-top: 2rem;
+      /* margin-top: 2rem; */
       position: relative;
       text-align: center;
       height: 28rem;
@@ -180,7 +185,7 @@ export default {
         flex-basis: 60%;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
     }
 

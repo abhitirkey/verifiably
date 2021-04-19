@@ -42,7 +42,6 @@ export default {
 <style>
     .linkPreviewCard {
         width: 100%;
-        height: 80vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -97,6 +96,11 @@ export default {
     }
 
     @media only screen and (min-width: 768px) {
+
+        .linkPreviewCard {
+            height: 90vh;
+        }
+
        .linkPreviewCard > span {
             width: 90%;
         }

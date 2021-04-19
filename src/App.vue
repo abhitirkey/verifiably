@@ -1,13 +1,7 @@
 <template>
-  <!-- <div class="app_container">  -->  
-  <!-- <Contact v-if="Journey" :Journey="Journey"/> -->
-    <!-- <Header/> -->
-    <!-- <transition mode="out-in" name="fade">
-      <router-view :key="$route.path" />
-    </transition>
-  </div> -->
   <div class="app_container" @wheel="ScrollHandler">
-    <Header v-if="checkUrl() !== '/'"/>
+    <!-- <Header v-if="checkUrl() !== '/'"/> -->
+    <Header/>
     <ScrollButton type="left" :class="{'visible' : currentSection > 1}" :sectionID="'#section'+(currentSection-1)" @click.native="goToPreviousSection"/>
     <transition mode="out-in" enter-active-class="animate__animated animate__zoomInDown pageEnter" leave-active-class="animate__animated animate__zoomOut pageLeave">
       <router-view v-if="windowActive" :key="$route.path" @scrollToNext="goToNextSection"/>
@@ -20,8 +14,6 @@
 import EventBus from '@/event-bus' // To listen to events triggered from sub components
 import Header from './components/Header.vue'
 import ScrollButton from './components/ScrollButton.vue'
-// import Intro from './components/LandingPage.vue'
-// import Contact from './components/Contact.vue'
 
 export default {
   name: "App",
@@ -34,8 +26,8 @@ export default {
       currentSection: 0,
       totalSections: 0,
       pagesWithPointers: [{
-        page: '/home',
-        totalSections: 4
+        page: '/',
+        totalSections: 3
       }],
       doScroll: false,
       windowScrolled: false,
@@ -84,7 +76,6 @@ export default {
     },
     showScrollButtons() {
       // Show scroll buttons after every time the page is scrolled
-        // console.log("currentSection: "+this.currentSection);
         let scrollButtons = document.querySelectorAll('.scrollButton');
         scrollButtons.forEach(button => {
           button.classList.add('showScrollButton');
@@ -150,9 +141,6 @@ export default {
 .app_container {
   overflow-x: hidden;
   overflow-y: hidden;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
 }
 
 /* This one emulates React.Fragment :P */
