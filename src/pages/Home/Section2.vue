@@ -153,13 +153,6 @@ export default {
         opacity: 0;
     }
 
-    .SliderRightQuote {
-        display:flex;
-        justify-content: flex-end;
-        margin-top: 2rem;
-        width: 100%;
-    }
-
 @media only screen and (min-width: 768px){
 
     .imageSlider {
@@ -170,10 +163,6 @@ export default {
     .col1 > p {
       font-size: 1.2rem;
       margin: 0.5rem 0;
-    }
-
-    .SliderRightQuote, .SliderLeftQuote {
-        font-size: 2rem;
     }
 /* 
     .two {
@@ -205,11 +194,6 @@ export default {
     .two > .row1 > .col1 > h1,
     .two > .row1 > .col1 > span {
         text-align: left;
-    }
-
-    .SliderRightQuote {
-        position: absolute;
-        bottom: 10%;
     }
 
     .problems__Grid {
