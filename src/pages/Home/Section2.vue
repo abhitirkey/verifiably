@@ -1,28 +1,32 @@
 <template>
     <div class="section two">
         <div class="row row1">
-            <div class="col col1">
+            <div class="col col1" data-animation="fadeInDown">
             <span class="boldText" style="font-size: 1.2rem;">THE CHALLENGE</span>
             <h1>How Data Ecosystems are broken today</h1>
             <p>Vast amounts of data stored by enterprises are inaccessible and un-monetized due to privacy concerns, operational complexity and regulations.</p>
             <p>Step 3 is where the trouble starts. Because the data must be replicated for use, a host of problems are introduced.</p>
             </div>
-            <div class="col col2">
+            <div class="col col2" data-animation="fadeInUp">
                 <!-- <div class="ChallengeDiagramDIV"> -->
                     <!-- <div v-if="dataUrl" :style="{ background }" class="ChallengeDiagramPlaceHolder"></div> -->
                     <!-- <img id="ChallengeDiagramID" src="./ChallengeDiagramPlaceholder.png" class="ChallengeDiagram"/> -->
                     <h2 class="SliderLeftQuote"><font-awesome-icon icon="quote-left"/></h2>
                     <div class="imageSlider">
                         <transition appear enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
-                         <img-lazy v-if="currentSlide === 1" key="slide1" :img-src="require('./Section2Slide/UI1.jpg')" background="background: transparent;" class="imageSlide"/>
-                         <img-lazy v-if="currentSlide === 2" key="slide2" :img-src="require('./Section2Slide/UI2.jpg')" background="background: transparent;" class="imageSlide"/>
-                         <img-lazy v-if="currentSlide === 3" key="slide3" :img-src="require('./Section2Slide/UI3.jpg')" background="background: transparent;" class="imageSlide"/>
+                            <LinkPreview v-show="currentSlide === 1" key="slide1" linkUrl="https://finance.yahoo.com/news/twitter-ceo-jack-dorsey-we-can-do-more-to-provide-algorithmic-transparency-190416046.html"/>   
+                            <!-- <LinkPreview v-show="currentSlide === 2" key="slide2" linkUrl="https://techcrunch.com/2021/04/14/building-customer-first-relationships-in-a-privacy-first-world-is-critical/?guccounter=1"/>    -->
                         </transition>
-                        <img-lazy key="slide4" :img-src="require('./Section2Slide/UI3.jpg')" background="background: transparent;" class="hiddenSlide"/>
+                        <transition appear enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
+                            <!-- <LinkPreview v-show="currentSlide === 1" key="slide1" linkUrl="https://finance.yahoo.com/news/twitter-ceo-jack-dorsey-we-can-do-more-to-provide-algorithmic-transparency-190416046.html"/>    -->
+                            <LinkPreview v-show="currentSlide === 2" key="slide2" linkUrl="https://techcrunch.com/2021/04/14/building-customer-first-relationships-in-a-privacy-first-world-is-critical/?guccounter=1"/>   
+                        </transition>
+                        <!-- <img-lazy key="slide4" :img-src="require('./Section2Slide/UI3.jpg')" background="background: transparent;" class="hiddenSlide"/> -->
                     </div>
-                    <h2 class="SliderRightQuote"><font-awesome-icon icon="quote-right"/></h2>
+                    <h2 class="SliderRightQuote"><font-awesome-icon icon="quote-right" style="color:red"/></h2>
                 <!-- </div> -->
             </div>
+            
         </div>
         <!-- <div class="row row2">
             <div class="col" style="align-items: center; gap: 1rem;">
@@ -41,19 +45,54 @@
 
 <script>
 
+import LinkPreview from './LinkPreview.vue'
+
 export default {
     name: 'Section2',
+    components: {
+        LinkPreview
+    },
     data() {
         return {
-            currentSlide: 0
+            currentSlide: 1
         }
     },
     mounted() {
+
+        // Slide Changer
         setInterval(() => {
-            if(this.currentSlide === 3)
+            if(this.currentSlide === 2)
                 this.currentSlide = 1;
             else this.currentSlide++;
-        }, 2000);
+        }, 4000);
+
+        // For animating elements on scroll
+        let elements = this.$el.querySelectorAll(".anim_scroll");
+
+        let config = {
+          threshold: 0.9
+        }
+
+        const observer = new IntersectionObserver(([entry]) => {
+            
+            // entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    console.log("intersecting!");
+                    entry.target.style.animation = `${entry.target.dataset.animation} 1s forwards ease-out`
+                }
+                else {
+                    console.log("not intersecting!");
+                    entry.target.style.animation = 'none'
+                }
+            // })
+
+      }, config);
+
+      observer.POLL_INTERVAL = 100; // Time in milliseconds.
+
+      elements.forEach(element => {
+          observer.observe(element)
+      })
     }
 }
 </script>
@@ -100,15 +139,7 @@ export default {
       margin-top: 2rem;
       position: relative;
       text-align: center;
-    }
-
-    .imageSlider  img {
-        max-width: 80%;
-        text-align: center;
-    }
-
-    .imageSlider .imageSlide {
-        position: absolute;
+      height: 100vh;
     }
 
     .imageSlider .hiddenSlide {
@@ -119,16 +150,15 @@ export default {
         display:flex;
         justify-content: flex-end;
         margin-top: 2rem;
+        width: 100%;
+        position: absolute;
+        bottom: 10%;
     }
 
 @media only screen and (min-width: 768px){
 
     .imageSlider {
       text-align: center;
-    }
-
-    .imageSlider img {
-        max-width: 75%;
     }
 
     .col1 > p {

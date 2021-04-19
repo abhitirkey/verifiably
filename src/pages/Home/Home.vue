@@ -36,7 +36,6 @@ export default {
 <style scoped>
 
   .section {
-    height: 100vh;
     padding-top: 7rem;
   }
 
