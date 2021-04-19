@@ -14,17 +14,26 @@
                     <h2 class="SliderLeftQuote"><font-awesome-icon icon="quote-left"/></h2>
                     <div class="imageSlider">
                         <transition appear enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
-                            <LinkPreview v-show="currentSlide === 1" key="slide1" linkUrl="https://finance.yahoo.com/news/twitter-ceo-jack-dorsey-we-can-do-more-to-provide-algorithmic-transparency-190416046.html"/>   
-                            <!-- <LinkPreview v-show="currentSlide === 2" key="slide2" linkUrl="https://techcrunch.com/2021/04/14/building-customer-first-relationships-in-a-privacy-first-world-is-critical/?guccounter=1"/>    -->
+                            <LinkPreview 
+                                v-show="currentSlide === 1" 
+                                key="slide1" 
+                                title="Twitter CEO Jack Dorsey: ‘We can do more to provide algorithmic transparency’"
+                                :imageUrl="require('./Section2Slide/TwitterCEO.jpg')" 
+                                linkUrl="https://finance.yahoo.com/news/twitter-ceo-jack-dorsey-we-can-do-more-to-provide-algorithmic-transparency-190416046.html"
+                                />   
                         </transition>
-                        <transition appear enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
-                            <!-- <LinkPreview v-show="currentSlide === 1" key="slide1" linkUrl="https://finance.yahoo.com/news/twitter-ceo-jack-dorsey-we-can-do-more-to-provide-algorithmic-transparency-190416046.html"/>    -->
-                            <LinkPreview v-show="currentSlide === 2" key="slide2" linkUrl="https://techcrunch.com/2021/04/14/building-customer-first-relationships-in-a-privacy-first-world-is-critical/?guccounter=1"/>   
+                        <transition appear enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">    -->
+                            <LinkPreview 
+                                v-show="currentSlide === 2" 
+                                key="slide2" 
+                                title="Building customer-first relationships in a privacy-first world is critical"
+                                :imageUrl="require('./Section2Slide/slide2.jpg')" 
+                                linkUrl="https://techcrunch.com/2021/04/14/building-customer-first-relationships-in-a-privacy-first-world-is-critical/?guccounter=1"
+                                />   
                         </transition>
-                        <!-- <img-lazy key="slide4" :img-src="require('./Section2Slide/UI3.jpg')" background="background: transparent;" class="hiddenSlide"/> -->
                     </div>
                     <h2 class="SliderRightQuote"><font-awesome-icon icon="quote-right" style="color:red"/></h2>
-                <!-- </div> -->
+                </div>
             </div>
             
         </div>
@@ -39,8 +48,6 @@
                 </div>
             </div>
         </div> -->
-              
-    </div>
 </template>
 
 <script>

@@ -1,26 +1,32 @@
 <template>
-    <link-prevue :url="linkUrl">
-        <template slot-scope="props">
+    <!-- <link-prevue :url="linkUrl">
+        <template slot-scope="props"> -->
             <div class="linkPreviewCard">
-                <img class="card-img-top" :src="props.img" :alt="props.title" />
-                <!-- <div class="card-block"> -->
-                <h2 class="card-title">{{props.title}}</h2>
-                <a v-bind:href="props.url">More</a>
-                <!-- </div> -->
+                <img class="card-img-top" :src="imageUrl" :alt="title" />
+                <h2 class="card-title">{{title}}</h2>
+                <a v-bind:href="linkUrl">More</a>
             </div>
-    </template>
-    </link-prevue>   
+    <!-- </template>
+    </link-prevue>    -->
 </template>
 
 <script>
-import LinkPrevue from "link-prevue";
+// import LinkPrevue from "link-prevue";
 
 export default {
-    components: {
-        LinkPrevue
-    },
+    // components: {
+    //     LinkPrevue
+    // },
     props: {
         linkUrl: {
+            type: String,
+            required: true
+        },
+        imageUrl: {
+            type: String,
+            required: true,
+        },
+        title: {
             type: String,
             required: true
         }
