@@ -4,7 +4,7 @@
             <div class="linkPreviewCard">
                 <img class="card-img-top" :src="imageUrl" :alt="title" />
                 <h2 class="card-title">{{title}}</h2>
-                <a v-bind:href="linkUrl">More</a>
+                <a v-bind:href="linkUrl" target="_blank">More</a>
             </div>
     <!-- </template>
     </link-prevue>    -->
