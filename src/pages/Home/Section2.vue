@@ -188,7 +188,7 @@ export default {
     }
 
     .two > .row1 > .col1 {
-        flex-basis: 40%;
+        flex-basis: 52%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -196,7 +196,7 @@ export default {
     }
 
     .two > .row1 > .col2 {
-        flex-basis: 60%;
+        flex-basis: 48%;
         order: 2;
         position: relative;
         margin-top: 0;

@@ -61,7 +61,6 @@ export default {
     }
 
     .linkPreviewCard > .article-author {
-        font-style: italic;
         width: 90%;
         margin: 1rem 0 1.5rem 0;
         font-weight: bolder;
@@ -97,12 +96,12 @@ export default {
     }
 
     @media only screen and (min-width: 768px) {
-       .linkPreviewCard > h2 {
-            width: 70%;
+       .linkPreviewCard > span {
+            width: 90%;
         }
 
         .linkPreviewCard > img {
-            width: 60%;
+            width: 70%;
         }
     }
 </style>
