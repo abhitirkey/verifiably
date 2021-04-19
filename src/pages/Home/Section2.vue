@@ -146,7 +146,7 @@ export default {
       margin-top: 2rem;
       position: relative;
       text-align: center;
-      height: 22rem;
+      height: 28rem;
     }
 
     .imageSlider .hiddenSlide {
