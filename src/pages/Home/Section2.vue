@@ -2,7 +2,7 @@
     <div class="section two">
         <div class="row row1" style="width: 80%; margin: auto">
             <div class="col col1" data-animation="fadeInDown">
-                <h1>The trust model is broken today</h1>
+                <h1>The web trust model is broken today</h1>
                 <p>Highly-publicized instances of user data misuse & breaches
     have (rightly) eroded consumer trust fueling increasing regulatory and user demand for transparency & accountability
     from businesses.</p>
