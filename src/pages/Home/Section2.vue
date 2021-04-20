@@ -1,6 +1,6 @@
 <template>
     <div class="section two">
-        <div class="row row1">
+        <div class="row row1" style="width: 80%; margin: auto">
             <div class="col col1" data-animation="fadeInDown">
                 <h1>The trust model is broken today</h1>
                 <p>Highly-publicized instances of user data misuse & breaches
@@ -9,13 +9,13 @@
                 <p>But small businesses
     & startups often lack the
     technical expertise & toolsets to address this
-    ever-growing transparency imperative.</p>`
+    ever-growing transparency imperative.</p>
             </div>
             <div class="col col2" data-animation="fadeInUp">
                 <!-- <div class="ChallengeDiagramDIV"> -->
                     <!-- <div v-if="dataUrl" :style="{ background }" class="ChallengeDiagramPlaceHolder"></div> -->
                     <!-- <img id="ChallengeDiagramID" src="./ChallengeDiagramPlaceholder.png" class="ChallengeDiagram"/> -->
-                    <div class="imageSlider">
+                    <div class="imageSlider" style="width: 80%">
                         <transition appear enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
                             <LinkPreview 
                                 v-show="currentSlide === 1" 
@@ -37,7 +37,7 @@
                                 />   
                         </transition>
                     </div>
-                </div>
+                <!-- </div> -->
             </div>
             
         </div>
@@ -52,6 +52,7 @@
                 </div>
             </div>
         </div> -->
+    </div>
 </template>
 
 <script>
