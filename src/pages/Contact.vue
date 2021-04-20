@@ -8,14 +8,11 @@
                     <!-- Conditional rendering for desktop or mobile -->
                     <div v-if="!isMobile()">
                         <span class="NavigationIconSpan" v-if="step > 1" @click="goBack()"><font-awesome-icon icon="caret-left"/></span>
-                        <!-- <span class="NavigationIconSpan grayed" v-else-if="step === 1"><font-awesome-icon icon="caret-left" style="color: rgb(165, 165, 165);"/></span> -->
                     </div>
                     <div v-else>
                         <span class="NavigationIconSpan" v-if="step > 1" @click="goBack()"><font-awesome-icon icon="caret-up"/></span>
-                        <!-- <span class="NavigationIconSpan grayed" v-else-if="step === 1"><font-awesome-icon icon="caret-up" style="color: rgb(165, 165, 165);"/></span> -->
                     </div>
                     
-                    <!-- <div class="form"> -->
                         <transition appear v-on:after-enter="afterEnter" :duration="{ enter: 250, leave: 250 }" v-bind:enter-active-class="enterClasses" v-bind:leave-active-class="leaveClasses">
                             <div v-if="step === 1" class="input__group" key="step1">
                                 <label for="contactField1">Your Name</label>
@@ -307,7 +304,7 @@ export default {
 }
 
 .textField {
-    font-size: 2rem;
+    font-size: 4vw;
     border: none;
     padding: 2px 20px;
     text-align: center;
@@ -319,7 +316,7 @@ export default {
 
 .messageField {
     height: 10vh;
-    font-size: 1.3rem;
+    font-size: 4vw;
     border: none;
     padding: 2px 10px;
     text-align: justify;
@@ -348,7 +345,8 @@ export default {
 }
 
 .invalidFieldMsg {
-    font-size: 1.2rem;
+    font-size: 4vw;
+    font-weight: bolder;
     animation: flash 1s;
 }
 
@@ -383,7 +381,7 @@ input[type=number] {
 
 .contactHeader {
     letter-spacing: .15em;
-    font-size: 2vw;
+    font-size: 4vw;
     font-weight: bolder;
 }
 
@@ -437,37 +435,24 @@ input[type=number] {
       height: 50%;
       justify-content: space-around;
     }
-}
-/* .formFieldEnterRight {
-    animation: backInRight 1s;
-    animation-delay: 0.5s;
-    animation-fill-mode: forwards;
-}
 
-.formFieldLeaveLeft {
-    animation: backOutLeft 1s;
-    animation-fill-mode: forwards;
-}
 
-@keyframes backInRight {
-    0% {
-        transform: scale(0.5);
-        right: 0;
+    .textField {
+        font-size: 2rem;
     }
-    100% {
-        transform: scale(1);
-        right: -50%;
+
+    .messageField {
+        font-size: 1.3rem;
+    }
+
+    .invalidFieldMsg {
+        font-size: 1.2rem;
+    }
+
+    .contactHeader {
+        letter-spacing: .15em;
+        font-size: 1.5rem;
+        font-weight: bolder;
     }
 }
-
-@keyframes backOutLeft {
-    0% {
-        transform: scale(1);
-        right: -50%;
-    }
-    100% {
-        transform: scale(0.5);
-        right: -100%;
-    }
-} */
 </style>
