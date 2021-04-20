@@ -75,7 +75,7 @@
                 <div v-if="step === 4" class="messageStatus" key="sendStatus">
                     <transition :duration="400" mode="out-in" enter-active-class="animate__animated animate__zoomIn" leave-active-class="animate__animated animate__zoomOut">
                         <div v-if="!formSent" key="sending">
-                            <h2 class="regularWeightText sendingForm TextCenter"> Please wait, sending form... </h2>
+                            <h2 class="regularWeightText sendingForm TextCenter"> Please wait, sending message... </h2>
                         </div>
                         <div v-else key="sent">
                             <h2 class="regularWeightText TextCenter"> We received your message! :) </h2>
