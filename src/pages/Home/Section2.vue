@@ -15,7 +15,7 @@
                 <!-- <div class="ChallengeDiagramDIV"> -->
                     <!-- <div v-if="dataUrl" :style="{ background }" class="ChallengeDiagramPlaceHolder"></div> -->
                     <!-- <img id="ChallengeDiagramID" src="./ChallengeDiagramPlaceholder.png" class="ChallengeDiagram"/> -->
-                    <div class="imageSlider" style="width: 80%">
+                    <div class="imageSlider">
                         <transition appear enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
                             <LinkPreview 
                                 v-show="currentSlide === 1" 
