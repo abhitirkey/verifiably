@@ -1,6 +1,6 @@
 <template>
     <div class="section two">
-        <div class="row row1">
+        <div class="row row1" style="width: 80%; margin: auto">
             <div class="col col1" data-animation="fadeInDown">
                 <h1>The trust model is broken today</h1>
                 <p>Highly-publicized instances of user data misuse & breaches
@@ -9,7 +9,7 @@
                 <p>But small businesses
     & startups often lack the
     technical expertise & toolsets to address this
-    ever-growing transparency imperative.</p>`
+    ever-growing transparency imperative.</p>
             </div>
             <div class="col col2" data-animation="fadeInUp">
                 <!-- <div class="ChallengeDiagramDIV"> -->
@@ -37,7 +37,7 @@
                                 />   
                         </transition>
                     </div>
-                </div>
+                <!-- </div> -->
             </div>
             
         </div>
@@ -52,6 +52,7 @@
                 </div>
             </div>
         </div> -->
+    </div>
 </template>
 
 <script>

@@ -78,8 +78,8 @@
                             <h2 class="regularWeightText sendingForm TextCenter"> Please wait, sending form... </h2>
                         </div>
                         <div v-else key="sent">
-                            <h2 class="regularWeightText TextCenter"> Form successfully sent! :) </h2>
-                            <h3 @click="resetForm()" class="animate__animated animate__lightSpeedInLeft delay reset_form TextCenter">Reset Form <font-awesome-icon icon="undo"/></h3>
+                            <h2 class="regularWeightText TextCenter"> We received your message! :) </h2>
+                            <h3 @click="resetForm()" class="animate__animated animate__lightSpeedInLeft delay reset_form TextCenter">Resend Message <font-awesome-icon icon="undo"/></h3>
                         </div>
                     </transition>
                 </div>

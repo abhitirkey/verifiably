@@ -53,7 +53,7 @@ export default {
         font-style: italic;
         width: 90%;
         margin-top: 1rem;
-        font-size: 1.7rem;
+        font-size: 1.3rem;
     }
 
     .article-title > strong {
@@ -64,13 +64,13 @@ export default {
         width: 90%;
         margin: 1rem 0 1.5rem 0;
         font-weight: bolder;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
     .linkPreviewCard > img {
         /* -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
         /* filter: grayscale(100%); */
-        width: 100%;
+        width: 80%;
     }
 
     .linkPreviewCard > a {
