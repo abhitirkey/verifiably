@@ -7,7 +7,6 @@
             <button class="hollowBtn" @click="scrollToNext">Learn More</button>
         </div>
         <div class="section1__imageContainer">
-            <!-- <img src="./open-government.png"/> -->
             <img-lazy :img-src="require('./TrustInABox.png')" :img-src-lazy="require('./TrustInABoxLQ.png')" alt="Establish trust, build verifiably." animateClass="bounceInDown"/>
         </div>
     </div>
