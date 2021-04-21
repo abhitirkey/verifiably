@@ -7,6 +7,7 @@
             <br/>
             <p>Building verifiably means a gap-free audit trail and security first implementation that also minimizes the risk of internal and external security breaches.</p>
             <br/>
+            <p>We'd love to hear from founders as we're currently partnering with a limited number of startups to build the first generation of transparent web apps prior to general availability.</p>
             <router-link to="/contact" style="z-index: 1; font-weight: bold; font-size: 125%">Contact Us</router-link>
         </div>
         <div class="background-image">
