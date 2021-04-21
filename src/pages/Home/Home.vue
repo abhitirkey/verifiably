@@ -32,12 +32,16 @@ export default {
     padding-top: 7rem;
   }
 
-  .one, .three {
+  .one {
     background: linear-gradient(white , rgb(209, 209, 209));
   }
 
   .two, .four {
     background: linear-gradient(rgb(209, 209, 209) , white);
+  }
+
+  .three {
+    background: white;
   }
 
   p {
@@ -60,6 +64,10 @@ export default {
 
         .one, .three {
           background: linear-gradient(to right,white , rgb(209, 209, 209));
+        }
+
+        .three {
+          background: white;
         }
 
         .two, .four {

@@ -1,7 +1,6 @@
 <template>
-<div class="section three">
-    <div class="section three" style="width: 80%; position: relative">
-        <div class="col col1" style="align-items: center; width: 80%">
+<div class="section three" style="position: relative">
+        <div class="col col1" style="width: 80%; align-items: center; width: 80%">
             <h1>Verifiably is the first transparency service for web apps.</h1>
             <br/>
             <p>We enable visibility into your app's algorithms and data access for end users, verifiable by anyone, trusted by everyone. All while building on popular cloud providers.</p>
@@ -10,10 +9,9 @@
             <br/>
             <router-link to="/contact" style="z-index: 1; font-weight: bold; font-size: 125%">Contact Us</router-link>
         </div>
-        <div style="opacity: 0.1; top: 0; left: 5%; bottom: 0; right: 0; position: absolute; z-index: 0; background-color: #625ea8; width: 90%">
+        <div class="background-image">
             <img-lazy :img-src="require('./section_3_open_internet.png')" alt="" animateClass="fadeIn" style="width: 100%"/>
         </div>
-    </div>
 </div>
 </template>
 
@@ -47,7 +45,7 @@ export default {
 
 .three > .col > a {
   background-color: transparent;
-  color: gray;
+  color: rgb(65, 65, 65);
   padding: 1rem;
   border-radius: 5px;
   text-transform: uppercase;
@@ -55,6 +53,7 @@ export default {
   box-shadow: 5px 5px 19px 0px #00000017;
   text-decoration: none;
   transition: 0.5s;
+  opacity: 0.9;
 }
 
 .three > .col > a:focus {
@@ -66,7 +65,19 @@ export default {
 }
 
 .three > .col > a:hover {
+  opacity: 1;
   transform: scale(1.2);
+}
+
+.background-image {
+    opacity: 0.075; 
+    top: 0; 
+    bottom: 0; 
+    right: 0; 
+    position: absolute; 
+    z-index: 0; 
+    background-color: #625ea8; 
+    width: 100%;
 }
 
 @media only screen and (min-width: 768px){
