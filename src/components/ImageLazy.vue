@@ -52,36 +52,36 @@ export default {
     }
   },
   mounted() {
-      const { imgSrc, $el, animateClass, classes } = this;
+      // const { imgSrc, $el, animateClass, classes } = this;
 
-      let config = {
-          threshold: 0.9
-      }
+      // let config = {
+      //     threshold: 0.9
+      // }
 
-       const img = $el;
+      //  const img = $el;
 
-      const observer = new IntersectionObserver(([entry]) => {
+      // const observer = new IntersectionObserver(([entry]) => {
             
-            if(entry.isIntersecting){
-                if(animateClass){
-                    img.classList.add('animate__animated');
-                    img.classList.add('animate__'+animateClass);
-                }
-                if(classes){
-                    img.classList.add(classes); 
-                }
-                img.src = imgSrc
-                observer.disconnect();
-            }
+      //       if(entry.isIntersecting){
+      //           if(animateClass){
+      //               img.classList.add('animate__animated');
+      //               img.classList.add('animate__'+animateClass);
+      //           }
+      //           if(classes){
+      //               img.classList.add(classes); 
+      //           }
+      //           img.src = imgSrc
+      //           observer.disconnect();
+      //       }
 
-      }, config);
+      // }, config);
 
-      observer.POLL_INTERVAL = 100; // Time in milliseconds.
-      observer.observe(img)
+      // observer.POLL_INTERVAL = 100; // Time in milliseconds.
+      // observer.observe(img)
 
-      this.$once('hook:beforeDestroy', () => {
-          observer.disconnect();
-      })
+      // this.$once('hook:beforeDestroy', () => {
+      //     observer.disconnect();
+      // })
   },
 }
 </script>
