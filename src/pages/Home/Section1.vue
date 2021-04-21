@@ -8,7 +8,7 @@
         </div>
         <div class="section1__imageContainer">
             <!-- <img src="./open-government.png"/> -->
-            <img-lazy :img-src="require('./TrustInABox.png')" :img-src-lazy="require('./TrustInABoxLQ.png')" alt="Open Government" width="80%" animateClass="bounceInDown"/>
+            <img-lazy :img-src="require('./TrustInABox.png')" :img-src-lazy="require('./TrustInABoxLQ.png')" alt="Establish trust, build verifiably." animateClass="bounceInDown"/>
         </div>
     </div>
 </template>
