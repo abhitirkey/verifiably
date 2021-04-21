@@ -7,7 +7,7 @@
             <p>Building verifiably means a gap-free audit trail and security first implementation that also minimizes the risk of internal and external security breaches.</p>
             <router-link to="/contact" style="z-index: 1">Contact Us</router-link>
         </div>
-        <div style="opacity: 0.05; top: 0; left: 0; bottom: 0; right: 0; position: absolute; z-index: 0">
+        <div style="opacity: 0.1; top: 0; left: 0; bottom: 0; right: 0; position: absolute; z-index: 0">
             <img-lazy :img-src="require('./section_3_open_internet.png')" alt="" animateClass="fadeIn" />
         </div>
     </div>
