@@ -1,12 +1,6 @@
 <template>
-<<<<<<< HEAD
 <div class="section three" style="position: relative">
         <div class="col col1" style="width: 80%; align-items: center; width: 80%">
-=======
-<div class="section three">
-    <div class="section three" style="width: 85%; position: relative">
-        <div class="col col1" style="align-items: center; width: 95%">
->>>>>>> cb16568a022c8382fbd169c931dd6de73aa741fc
             <h1>Verifiably is the first transparency service for web apps.</h1>
             <br/>
             <p>We enable visibility into your app's algorithms and data access for end users, verifiable by anyone, trusted by everyone. All while building on popular cloud providers.</p>
@@ -15,12 +9,8 @@
             <br/>
             <router-link to="/contact" style="z-index: 1; font-weight: bold; font-size: 125%">Contact Us</router-link>
         </div>
-<<<<<<< HEAD
         <div class="background-image">
-=======
-        <div style="opacity: 0.1; top: 0; left: 0; bottom: 0; right: 0; position: absolute; z-index: 0; background-color: #625ea8; width: 100%">
->>>>>>> cb16568a022c8382fbd169c931dd6de73aa741fc
-            <img-lazy :img-src="require('./section_3_open_internet.png')" alt="" animateClass="fadeIn" style="width: 100%"/>
+            <img-lazy :imgSrcLazy="require('./section_3_open_internet_compressed.png')" :img-src="require('./section_3_open_internet.png')" alt="" animateClass="fadeIn" style="width: 100%"/>
         </div>
 </div>
 </template>
