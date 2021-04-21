@@ -1,6 +1,6 @@
 <template>
     <div class="section two">
-        <div class="row row1" style="width: 80%; margin: auto">
+        <div class="row row1" style="width: 90%; margin: auto">
             <div class="col col1" data-animation="fadeInDown">
                 <h1>The web trust model is broken today</h1>
                 <br/>
