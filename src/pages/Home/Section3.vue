@@ -8,10 +8,10 @@
             <p>Building verifiably means a gap-free audit trail and security first implementation that also minimizes the risk of internal and external security breaches.</p>
             <br/>
             <p>We'd love to hear from founders as we're currently partnering with a limited number of startups to build the first generation of transparent web apps prior to general availability.</p>
-            <router-link to="/contact" style="z-index: 1; font-weight: bold; font-size: 125%">Contact Us</router-link>
+            <router-link to="/contact" style="z-index: 1; font-weight: bold;">Contact Us</router-link>
         </div>
         <div class="background-image">
-            <img-lazy :imgSrcLazy="require('./section_3_open_internet_compressed.png')" :img-src="require('./section_3_open_internet.png')" alt="" animateClass="fadeIn" style="width: 100%"/>
+            <img-lazy :imgSrcLazy="require('./section_3_open_internet_LQ.png')" :img-src="require('./section_3_open_internet.png')" alt="" width="100%" blur="3px"/>
         </div>
 </div>
 </template>
@@ -45,16 +45,18 @@ export default {
 }
 
 .three > .col > a {
+  margin-top: 1rem;
   background-color: transparent;
   color: rgb(65, 65, 65);
   padding: 1rem;
   border-radius: 5px;
   text-transform: uppercase;
   border: none;
-  box-shadow: 5px 5px 19px 0px #00000017;
+  box-shadow: 5px 5px 19px 0px #00000041;
   text-decoration: none;
   transition: 0.5s;
   opacity: 0.9;
+  font-size: 1.25rem;
 }
 
 .three > .col > a:focus {
@@ -79,11 +81,5 @@ export default {
     z-index: 0; 
     background-color: #625ea8; 
     width: 100%;
-}
-
-@media only screen and (min-width: 768px){
-    .three > .col > img {
-        width: 60%;
-    }
 }
 </style>

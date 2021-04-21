@@ -11,6 +11,10 @@ button {
     -o-transition: 1s;
 }
 
+.buttonFont {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 button:hover {
     opacity: 1;
     color: black;

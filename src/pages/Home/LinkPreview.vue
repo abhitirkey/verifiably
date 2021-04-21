@@ -5,7 +5,7 @@
                 <img class="card-img-top" :src="imageUrl" :alt="title" />
                 <span class="article-title"><strong>“</strong>{{title}}<strong>”</strong></span>
                 <span class="article-author">{{author}}</span>
-                <a v-bind:href="linkUrl" target="_blank">More</a>
+                <a v-bind:href="linkUrl" target="_blank" class="buttonFont">More</a>
             </div>
     <!-- </template>
     </link-prevue>    -->
@@ -83,10 +83,9 @@ export default {
         -moz-transition: 1s;
         -ms-transition: 1s;
         -o-transition: 1s;
-        font-size: 1rem;
+        font-size: 1.2rem;
         text-transform: uppercase;
         box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274);
-        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     .linkPreviewCard > a:hover {

@@ -7,7 +7,7 @@
     :width="$attrs.width"
     :class="classes"
     v-bind="$attrs"
-    class="AppImage"
+    class="AppImage filter"
   >
 <!-- </div> -->
 </template>
@@ -33,6 +33,10 @@ export default {
     animateClass: {
         type: String,
         default: null
+    },
+    blur: {
+      type: String,
+      default: null
     }      
   },
   computed: {
@@ -52,36 +56,43 @@ export default {
     }
   },
   mounted() {
-      // const { imgSrc, $el, animateClass, classes } = this;
+      const { imgSrc, $el, animateClass, classes } = this;
 
-      // let config = {
-      //     threshold: 0.9
-      // }
+      let config = {
+          threshold: 0.9
+      }
 
-      //  const img = $el;
-
-      // const observer = new IntersectionObserver(([entry]) => {
+       const img = $el;
+      const observer = new IntersectionObserver(([entry]) => {
             
-      //       if(entry.isIntersecting){
-      //           if(animateClass){
-      //               img.classList.add('animate__animated');
-      //               img.classList.add('animate__'+animateClass);
-      //           }
-      //           if(classes){
-      //               img.classList.add(classes); 
-      //           }
-      //           img.src = imgSrc
-      //           observer.disconnect();
-      //       }
+            if(entry.isIntersecting){
+                if(animateClass){
+                    img.classList.add('animate__animated');
+                    img.classList.add('animate__'+animateClass);
+                }
+                if(classes){
+                    img.classList.add(classes); 
+                }
+                img.src = imgSrc
+                
+                if(this.blur){
+                  img.setAttribute('style', `filter: blur(${this.blur});`);
+                  img.setAttribute('style', `filter: blur(${this.blur});`);
+                }
+                
+                img.classList.remove('filter');
+                
+                observer.disconnect();
+            }
 
-      // }, config);
+      }, config);
 
-      // observer.POLL_INTERVAL = 100; // Time in milliseconds.
-      // observer.observe(img)
+      observer.POLL_INTERVAL = 100; // Time in milliseconds.
+      observer.observe(img)
 
-      // this.$once('hook:beforeDestroy', () => {
-      //     observer.disconnect();
-      // })
+      this.$once('hook:beforeDestroy', () => {
+          observer.disconnect();
+      })
   },
 }
 </script>
@@ -89,6 +100,12 @@ export default {
 <style>
 .AppImage {
   max-width: 100%;
+  object-fit: cover;
   vertical-align: middle;
+}
+
+.filter {
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
 }
 </style>

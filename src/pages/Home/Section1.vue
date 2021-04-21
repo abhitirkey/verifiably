@@ -8,7 +8,7 @@
         </div>
         <div class="section1__imageContainer">
             <!-- <img src="./open-government.png"/> -->
-            <img-lazy :img-src="require('./TrustInABox.png')" :img-src-lazy="require('./TrustInABoxCompressed.png')" alt="Open Government" width="80%" animateClass="bounceInDown"/>
+            <img-lazy :img-src="require('./TrustInABox.png')" :img-src-lazy="require('./TrustInABoxLQ.png')" alt="Open Government" width="80%" animateClass="bounceInDown"/>
         </div>
     </div>
 </template>
@@ -66,11 +66,10 @@ export default {
   .section1__imageContainer {
       order: 1;
       text-align: center;
-      
+      width: 60%;
     }
 
   .section1__imageContainer > img {
-      width: 60%;
       animation: bounce 1s;
       animation-delay: 0.2s;
       animation-fill-mode: forwards;
