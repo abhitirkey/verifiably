@@ -7,8 +7,12 @@
             <button class="hollowBtn" @click="scrollToNext">Learn More</button>
         </div>
         <div class="section1__imageContainer">
+<<<<<<< HEAD
             <!-- <img src="./open-government.png"/> -->
             <img-lazy :img-src="require('./TrustInABox.png')" :imgSrcLazy="require('./TrustInABoxCompressed.png')" alt="Open Government" width="80%" animateClass="bounceInDown"/>
+=======
+            <img-lazy :img-src="require('./TrustInABox.png')" alt="Establish trust, build verifiably." width="80%" animateClass="bounceInDown"/>
+>>>>>>> 2654cf0f8a5d09bf4e55deeacacc812c740ca5dc
         </div>
     </div>
 </template>
