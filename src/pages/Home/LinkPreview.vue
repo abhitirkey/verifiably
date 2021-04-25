@@ -1,23 +1,15 @@
 <template>
-    <!-- <link-prevue :url="linkUrl">
-        <template slot-scope="props"> -->
-            <div class="linkPreviewCard">
-                <img class="card-img-top" :src="imageUrl" :alt="title" />
-                <span class="article-title"><strong>“</strong>{{title}}<strong>”</strong></span>
-                <span class="article-author">{{author}}</span>
-                <a v-bind:href="linkUrl" target="_blank">More</a>
-            </div>
-    <!-- </template>
-    </link-prevue>    -->
+    <div class="linkPreviewCard">
+        <img class="card-img-top" :src="imageUrl" :alt="title" />
+        <span class="article-title"><strong>“</strong>{{title}}<strong>”</strong></span>
+        <span class="article-author">{{author}}</span>
+        <a v-if="linkUrl" v-bind:href="linkUrl" target="_blank">More</a>
+    </div>
 </template>
 
 <script>
-// import LinkPrevue from "link-prevue";
 
 export default {
-    // components: {
-    //     LinkPrevue
-    // },
     props: {
         linkUrl: {
             type: String,

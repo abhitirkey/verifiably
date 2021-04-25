@@ -21,10 +21,10 @@
                             <LinkPreview 
                                 v-show="currentSlide === 1" 
                                 key="slide1" 
-                                title="We can do more to provide algorithmic transparency"
-                                author="Twitter CEO Jack Dorsey"
-                                :imageUrl="require('./Section2Slide/TwitterCEO.jpg')" 
-                                linkUrl="https://finance.yahoo.com/news/twitter-ceo-jack-dorsey-we-can-do-more-to-provide-algorithmic-transparency-190416046.html"
+                                title="We're building a future that choses transparency over blind trust."
+                                author="Verifiably CEO Atul Payapilly"
+                                :imageUrl="require('./Section2Slide/atul.jpg')"
+                                linkUrl=""
                                 />   
                         </transition>
                         <transition appear enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">    -->
