@@ -41,7 +41,6 @@ export default {
 
 .three > .col > p {
     font-size: 1.2rem;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 .three > .col > a {
@@ -56,7 +55,9 @@ export default {
   text-decoration: none;
   transition: 0.5s;
   opacity: 0.9;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
+  font-family:'Inter', sans-serif;
+  letter-spacing: 3px;
 }
 
 .three > .col > a:focus {

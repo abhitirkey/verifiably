@@ -3,6 +3,7 @@
         <div class="section1__textContainer">
             <h1>Establish trust, <br/>build verifiably.</h1>
             <span>We enable data privacy and algorithm fairness of web apps via verifiable transparency of code and data access as a service.</span>
+            <br>
             <span>Establish customer trust while also having gap free audit trails for internal security.</span>
             <button class="hollowBtn" @click="scrollToNext">Learn More</button>
         </div>
@@ -51,15 +52,12 @@ export default {
   }
 
   .section1__textContainer > span {
-    font-size: 0.9rem;
-    font-family:Arial, Helvetica, sans-serif;
     text-align: justify;
     margin-bottom: 0.5rem;
   }
 
   .section1__textContainer > button {
     margin-top: 1rem;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
 
   .section1__imageContainer {

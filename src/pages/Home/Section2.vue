@@ -126,9 +126,6 @@ export default {
   }
 
   .col1 > p {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 1rem;
-      text-align: justify;
       margin: 0.5rem 0;
   }
 

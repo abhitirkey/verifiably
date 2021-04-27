@@ -83,7 +83,9 @@ export default {
         -moz-transition: 1s;
         -ms-transition: 1s;
         -o-transition: 1s;
+        font-family: 'Inter', sans-serif;
         font-size: 1.2rem;
+        letter-spacing: 2px;
         text-transform: uppercase;
         box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274);
     }

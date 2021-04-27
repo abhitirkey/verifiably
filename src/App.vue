@@ -127,13 +127,14 @@ export default {
 <style>
 
 @import 'classes/global-classes.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 
 * {
   /* font-family: Avenir, Helvetica, Arial, sans-serif; */
   font-family: monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: #2e2e2e;
   margin: 0;
   box-sizing: border-box;
 }
