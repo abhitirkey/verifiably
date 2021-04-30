@@ -7,7 +7,7 @@
             <button class="hollowBtn" @click="scrollToNext">Learn More</button>
         </div>
         <div class="section1__imageContainer">
-            <img-lazy :img-src="require('./TrustInABox.png')" alt="Establish trust, build verifiably." width="80%" animateClass="bounceInDown"/>
+            <img-lazy :img-src="require('./TrustInABox.png')" alt="Establish trust, build verifiably." width="80%" />
         </div>
     </div>
 </template>
@@ -70,9 +70,6 @@ export default {
 
   .section1__imageContainer > img {
       width: 60%;
-      animation: bounce 1s;
-      animation-delay: 0.2s;
-      animation-fill-mode: forwards;
   }
 
   @media only screen and (min-width: 768px){

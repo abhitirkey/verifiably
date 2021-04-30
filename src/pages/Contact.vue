@@ -2,7 +2,7 @@
     <div class="contactPage__container">
         <div class="contactFormComponent">
             <div class="animate__animated animate__bounceInLeft">
-                <p class="contactHeader">Let's get started. <font-awesome-icon icon="coffee" /></p>
+                <p class="contactHeader">Let's get started.</p>
             </div>
             <div v-if="step !== 4 && step > 0" class="formContainer fadeInForm" key="contactForm">
                     <!-- Conditional rendering for desktop or mobile -->
