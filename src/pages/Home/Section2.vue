@@ -2,15 +2,14 @@
     <div class="section two">
         <div class="row row1" style="width: 80%; margin: auto">
             <div class="col col1" data-animation="fadeInDown">
-                <h1>The web trust model is broken today</h1>
-                <br/>
+                <h1>Startups need to build securely from day 0</h1>
                 <p>Highly-publicized instances of user data misuse & breaches
     have (rightly) eroded consumer trust fueling increasing regulatory and user demand for transparency & accountability
     from businesses.</p>
                 <p>But small businesses
-    & startups often lack the
-    technical expertise & toolsets to address this
-    ever-growing transparency imperative.</p>
+    & startups lack the time and
+    resources to address this
+    ever-growing customer security imperative.</p>
             </div>
             <div class="col col2" data-animation="fadeInUp">
                 <!-- <div class="ChallengeDiagramDIV"> -->
@@ -21,7 +20,7 @@
                             <LinkPreview 
                                 v-show="currentSlide === 1" 
                                 key="slide1" 
-                                title="We're building a future that choses transparency over blind trust."
+                                title="We're building a safer internet by addressing startup customer security."
                                 author="Verifiably CEO Atul Payapilly"
                                 :imageUrl="require('./Section2Slide/atul.jpg')"
                                 linkUrl=""

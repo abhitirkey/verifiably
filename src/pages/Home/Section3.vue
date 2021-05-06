@@ -1,13 +1,13 @@
 <template>
 <div class="section three" style="position: relative">
         <div class="col col1" style="width: 80%; align-items: center; width: 80%">
-            <h1>Verifiably is the first transparency service for web apps.</h1>
+            <h1>Verifiably makes customer security easy and affordable</h1>
             <br/>
-            <p>We enable visibility into your app's algorithms and data access for end users, verifiable by anyone, trusted by everyone. All while building on popular cloud providers.</p>
+            <p>We understand that different startups need different levels of security and address this with a basic, better and best customer security approach.</p>
             <br/>
-            <p>Building verifiably means a gap-free audit trail and security first implementation that also minimizes the risk of internal and external security breaches.</p>
+            <p>Basic covers continuous compliance, better is code only data access and gap-free audit trails and best is building customer security verifiably, i.e. in a way that is verifiable by the end user, a first.</p>
             <br/>
-            <p>We'd love to hear from founders as we're currently partnering with a limited number of startups to build the first generation of transparent web apps prior to general availability.</p>
+            <p>Early-stage startups, reach out to us for your customer security needs.</p>
             <router-link to="/contact" style="z-index: 1; font-weight: bold; font-size: 125%">Contact Us</router-link>
         </div>
         <div class="background-image">

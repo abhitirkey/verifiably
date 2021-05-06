@@ -1,9 +1,8 @@
 <template>
   <div class="section one">
         <div class="section1__textContainer">
-            <h1>Establish trust, <br/>build verifiably.</h1>
-            <span>We enable data privacy and algorithm fairness of web apps via verifiable transparency of code and data access as a service.</span>
-            <span>Establish customer trust while also having gap free audit trails for internal security.</span>
+            <h1>Customer security for startups</h1>
+            <span>Verifiably provides automation and frameworks to make your customer security implementation <b>(Data Access, Privacy & Algorithm Fairness)</b> robust, easy and affordable.</span>
             <button class="hollowBtn" @click="scrollToNext">Learn More</button>
         </div>
         <div class="section1__imageContainer">
@@ -94,7 +93,9 @@ export default {
         }
 
         .section1__textContainer > span {
-          font-size: 1.2rem;
+          font-size: 1.4rem;
+          font-family: sans-serif;
+
         }
 
         .section1__imageContainer {
