@@ -1,3 +1,5 @@
+A horizontally scrollable, animated business website developed using Vue.js
+
 # LIVE demo:
 https://demo.d3ku719nu0dofe.amplifyapp.com/
 
