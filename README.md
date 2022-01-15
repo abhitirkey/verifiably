@@ -1,3 +1,6 @@
+# LIVE demo:
+https://demo.d3ku719nu0dofe.amplifyapp.com/
+
 # verifiably
 
 ## Project setup
